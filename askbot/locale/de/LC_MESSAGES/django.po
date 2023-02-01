@@ -4457,7 +4457,7 @@ msgstr "behaltet private Dinge innerhalb eurer Gruppen"
 
 #: forms.py:934
 msgid "User name:"
-msgstr "Benutzer-Anmeldung"
+msgstr "Benutzername:"
 
 #: forms.py:935
 msgid "Enter name to post on behalf of someone else. Can create new accounts."
@@ -4487,11 +4487,11 @@ msgstr "Einzelheiten hinzufügen (optional)"
 #, fuzzy
 #| msgid "Add details"
 msgid "Add details below"
-msgstr "Einzelheiten hinzufügen:"
+msgstr "Einzelheiten hinzufügen"
 
 #: forms.py:1027
 msgid "post anonymously"
-msgstr "Nachricht anonym aufgeben."
+msgstr "Nachricht anonym aufgeben"
 
 #: forms.py:1046
 msgid ""
