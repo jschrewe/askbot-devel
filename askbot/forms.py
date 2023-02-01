@@ -1013,7 +1013,7 @@ class AskForm(PostAsSomeoneForm, PostPrivatelyForm):
         user = kwargs.get('user', None)
         super(AskForm, self).__init__(*args, **kwargs)
         # It's important that this field is set up dynamically
-        self.fields['title'] = TitleField()
+        self.fields['title'] = TitleField(label="Beschreiben Sie das Problem in einem Fragesatz")
         self.fields['tags'] = TagNamesField()
 
         if askbot_settings.MIN_QUESTION_BODY_LENGTH == 0:
@@ -1021,7 +1021,11 @@ class AskForm(PostAsSomeoneForm, PostPrivatelyForm):
         else:
             label = _('Add details below')
 
-        self.fields['text'] = QuestionEditorField(user=user, label=label)
+        self.fields['text'] = QuestionEditorField(
+            user=user, 
+            label="Problemdetails",
+            help_text='Bitte beschreiben Sie Ihr Problem kurz und präzise, aber so dass andere Nutzer es nachvollziehen können'
+        )
 
         self.fields['ask_anonymously'] = forms.BooleanField(
             label=_('post anonymously'), required=False)
@@ -1034,6 +1038,9 @@ class AskForm(PostAsSomeoneForm, PostPrivatelyForm):
 
         if should_use_recaptcha(user):
             self.fields['recaptcha'] = AskbotReCaptchaField()
+
+        self.hide_field('wiki')
+        
 
     def clean_ask_anonymously(self):
         """returns false if anonymous asking is not allowed
