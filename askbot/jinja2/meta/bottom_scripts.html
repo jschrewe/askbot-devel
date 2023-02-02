@@ -64,7 +64,7 @@
 </script>
 {# everything below until the custom js and google analytics is compressable #}
 <form name="scroll-pos-form"><input id="scroll-mem" type="text" style="display: none;"/></form>
-{% compress js %}
+
   <script src="{{ '/jslib/jquery-3.6.0.min.js'|media }}"></script>
   <script src="{{ '/jslib/jquery.modal.min.js'|media }}"></script>
   <script src="{{ '/jslib/timeago.js'|media }}"></script>
@@ -122,7 +122,6 @@
   {% endif %}
   <script src="{{ '/js/searchbar/tag_search.js'|media }}"></script>
   <script src="{{ '/js/utils/ask_button.js'|media }}"></script>
-{% endcompress %}
 <script>
   /*<![CDATA[*/
   $('.mceStatusbar').remove();//a hack to remove the tinyMCE status bar
