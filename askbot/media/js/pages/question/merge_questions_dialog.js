@@ -1,5 +1,5 @@
 /* global askbot, gettext, inherits, makeKeyHandler, Tag, ModalDialog */
-(function () {
+/*(function () {
   var MergeQuestionsDialog = function () {
     ModalDialog.call(this);
     this._tags = [];
@@ -85,9 +85,9 @@
       var curId = me.getToId();
       // here I am disabling eqeqeq because it looks like there's a type coercion going on, can't be sure
       // so skipping it
-      /*jshint eqeqeq:false*/
+      /*jshint eqeqeq:false*//*
       if (curId) {// && curId != prevId) {
-      /*jshint eqeqeq:true*/
+      /*jshint eqeqeq:true*//*
         $.ajax({
           type: 'GET',
           cache: false,
@@ -206,4 +206,5 @@
       mergeQuestions.show();
     });
   }
-})();
+})();*/
+
