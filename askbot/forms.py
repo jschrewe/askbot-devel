@@ -1039,6 +1039,8 @@ class AskForm(PostAsSomeoneForm, PostPrivatelyForm):
         if should_use_recaptcha(user):
             self.fields['recaptcha'] = AskbotReCaptchaField()
 
+        self.hide_field('wiki')
+        
 
     def clean_ask_anonymously(self):
         """returns false if anonymous asking is not allowed

@@ -188,7 +188,7 @@ Comment.prototype.setContent = function (data) {
     // 6) update the timestamp
     this._dateElement.html(data.comment_added_at);
     this._dateElement.attr('title', data.comment_added_at);
-    //this._dateElement.timeago();
+    this._dateElement.timeago();
 
     // 7) set comment score
     if (data.score) {
