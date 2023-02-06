@@ -116,10 +116,8 @@ var sameOrigin = function(url) {
     );
 };
 
-console.log("Before Ajaxsetup...");
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
-        console.log("Ajaxsetup");
         if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
             // Send the token to same-origin, relative URLs only.
             // Send the token only if the method warrants CSRF protection
@@ -129,7 +127,6 @@ $.ajaxSetup({
         }
     }
 });
-console.log("After Ajaxsetup...");
 
 
 /**
