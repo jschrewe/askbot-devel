@@ -31,27 +31,27 @@ http://stackoverflow.com/questions/2090717/getting-translation-strings-for-jinja
 
 import re
 from django.core.management.commands import makemessages
-from django.utils.translation import trans_real
+from django.utils.translation import template
 
 
 class Command(makemessages.Command):
 
     def handle(self, *args, **options):
-        old_endblock_re = trans_real.endblock_re
-        old_block_re = trans_real.block_re
-        old_plural_re = trans_real.plural_re
+        old_endblock_re = template.endblock_re
+        old_block_re = template.block_re
+        old_plural_re = template.plural_re
         # Extend the regular expressions that are used to detect
         # translation blocks with an "OR jinja-syntax" clause.
-        trans_real.endblock_re = re.compile(
-            trans_real.endblock_re.pattern + '|' + r"""^-?\s*endtrans\s*-?$""")
-        trans_real.block_re = re.compile(
-            trans_real.block_re.pattern + '|' + r"""^-?\s*trans(?:\s*|$)""")
-        trans_real.plural_re = re.compile(
-            trans_real.plural_re.pattern + '|' + r"""^-?\s*pluralize(\s+\w+)?\s*-?$""")
+        template.endblock_re = re.compile(
+            template.endblock_re.pattern + '|' + r"""^-?\s*endtrans\s*-?$""")
+        template.block_re = re.compile(
+            template.block_re.pattern + '|' + r"""^-?\s*trans(?:\s*|$)""")
+        template.plural_re = re.compile(
+            template.plural_re.pattern + '|' + r"""^-?\s*pluralize(\s+\w+)?\s*-?$""")
 
         try:
             super(Command, self).handle(*args, **options)
         finally:
-            trans_real.endblock_re = old_endblock_re
-            trans_real.block_re = old_block_re
-            trans_real.plural_re = old_plural_re
+            template.endblock_re = old_endblock_re
+            template.block_re = old_block_re
+            template.plural_re = old_plural_re
