@@ -29,7 +29,7 @@ msgstr ""
 "Project-Id-Version: askbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-07 11:57+0100\n"
-"PO-Revision-Date: 2023-02-19 17:55+0100\n"
+"PO-Revision-Date: 2023-02-19 18:39+0100\n"
 "Last-Translator: Jan Schrewe, 2023\n"
 "Language-Team: German (http://www.transifex.com/askbot/askbot/language/de/)\n"
 "Language: de\n"
@@ -369,9 +369,7 @@ msgstr "Badge Ablaufzeit in Tagen"
 
 #: conf/email.py:16
 msgid "Email and email alert settings"
-msgstr ""
-"E-Mail- und Benachrichtigungs- \n"
-"Einstellungen"
+msgstr "E-Mail- und Benachrichtigungseinstellungen"
 
 #: conf/email.py:25
 msgid "Prefix for the email subject line"
@@ -395,7 +393,7 @@ msgstr "Absenderadresse für Benachrichtigungen"
 
 #: conf/email.py:64
 msgid "Enable email alerts"
-msgstr "Aktiviere Email Benachrichtigungen"
+msgstr "Aktiviere E-Mail Benachrichtigungen"
 
 #: conf/email.py:72
 msgid "Enable instant email alerts"
@@ -623,7 +621,7 @@ msgid ""
 "<b>NOTE: All email text settings allow placeholders: {{ USER_NAME }}, "
 "{{ SITE_NAME }} and {{ SITE_LINK }}.</b>"
 msgstr ""
-"<b>Zur Info: Alle Emailtext Einstellungen können mit Platzhaltern wie "
+"<b>Zur Info: Alle E-Mailtext Einstellungen können mit Platzhaltern wie "
 "{{ USER_NAME }}, {{ SITE_NAME }} und {{ SITE_LINK }} versehen werden.</b>"
 
 #: conf/email_text.py:28
@@ -4550,7 +4548,7 @@ msgstr "Okay, versuchen wir's!"
 #: forms.py:1560
 #, python-format
 msgid "no %(sitename)s email please, thanks"
-msgstr "keine %(sitename)s Emails bitte."
+msgstr "keine %(sitename)s E-Mails bitte"
 
 #: forms.py:1614 jinja2/reopen.html:7
 msgid "Title"
@@ -4789,7 +4787,7 @@ msgstr "Wähle einen Nickname"
 #: jinja2/authopenid/signup_with_password.html:43
 #: jinja2/components/proxy_author_inputs.html:23
 msgid "Email address"
-msgstr "E-Mail Adresse"
+msgstr "E-Mailadresse"
 
 #: jinja2/authopenid/complete.html:89
 #: jinja2/authopenid/signup_with_password.html:5
@@ -5025,22 +5023,18 @@ msgid "Continue"
 msgstr "Weiter"
 
 #: jinja2/avatar/avatar.html:3
-#, fuzzy, python-format
-#| msgid "%(username)s gravatar image"
+#, python-format
 msgid "%(username)s's primary avatar"
 msgstr "%(username)s Gravatar-Bild"
 
 #: jinja2/avatar/avatar.html:5 jinja2/macros.html:591
-#, fuzzy, python-format
-#| msgid "%(username)s gravatar image"
+#, python-format
 msgid "%(username)s's avatar"
 msgstr "%(username)s Gravatar-Bild"
 
 #: jinja2/avatar/confirm_delete.html:2
-#, fuzzy
-#| msgid "Default avatar"
 msgid "delete avatar"
-msgstr "Standartavatar"
+msgstr "Avatar löschen"
 
 #: jinja2/avatar/confirm_delete.html:4
 msgid "Please select the avatars that you would like to delete."
@@ -5088,26 +5082,20 @@ msgid "Remove"
 msgstr "Entfernen"
 
 #: jinja2/avatar/show_list.html:56
-#, fuzzy
-#| msgid "Gravatar"
 msgid "Primary avatar"
-msgstr "Gravatar"
+msgstr "Primärer Avatar"
 
 #: jinja2/avatar/show_list.html:63
 msgid "You haven't uploaded an avatar yet."
 msgstr "Sie haben noch keinen Avatar hochgeladen."
 
 #: jinja2/avatar/show_list.html:65
-#, fuzzy
-#| msgid "Uploaded Avatar"
 msgid "Upload another avatar."
-msgstr "Hochgeladener Avatar"
+msgstr "Lade einen anderen Avatar hoch."
 
 #: jinja2/avatar/show_list.html:70
-#, fuzzy
-#| msgid "Uploaded Avatar"
 msgid "Upload an avatar"
-msgstr "Hochgeladener Avatar"
+msgstr "Lade einen Avatar hoch"
 
 #: jinja2/badge.html:7 jinja2/badge.html:18
 #, python-format
@@ -5115,16 +5103,13 @@ msgid "%(name)s"
 msgstr "%(name)s"
 
 #: jinja2/badge.html:9
-#, fuzzy
-#| msgid "Badge name"
 msgid "Badge"
-msgstr "Name der Auszeichnung"
+msgstr "Auszeichnung"
 
 #: jinja2/badge.html:16
-#, fuzzy, python-format
-#| msgid "Badge name"
+#, python-format
 msgid "Badge \"%(name)s\""
-msgstr "Name der Auszeichnung"
+msgstr "Auszeichnung ”%(name)s”"
 
 #: jinja2/badge.html:19
 #, python-format
@@ -5139,14 +5124,12 @@ msgstr[0] "%(num_awardees)s Benutzer hat dieses Abzeichen erhalten"
 msgstr[1] "%(num_awardees)s Benutzer haben dieses Abzeichen erhalten"
 
 #: jinja2/badge.html:29
-#, fuzzy
-#| msgid "received badge"
 msgid "Nobody yet received this badge."
-msgstr "verliehene Abzeichen"
+msgstr "Diese Auszeichung hat. Noch niemand erhalten."
 
 #: jinja2/badges/index.html:3 jinja2/badges/index.html:6
 msgid "Badges"
-msgstr "Abzeichen"
+msgstr "Auszeichnungen"
 
 #: jinja2/badges/index.html:11
 msgid ""
@@ -5155,10 +5138,8 @@ msgid ""
 msgstr ""
 
 #: jinja2/badges/sidebar.html:2
-#, fuzzy
-#| msgid "Badge name"
 msgid "Badge levels"
-msgstr "Name der Auszeichnung"
+msgstr "Auszeichungslevel"
 
 #: jinja2/badges/sidebar.html:7
 msgid ""
@@ -5200,19 +5181,14 @@ msgstr ""
 "            "
 
 #: jinja2/components/footer.html:26
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "about/"
 msgid "about"
-msgstr "&Uuml;ber/"
+msgstr "Über"
 
 #: jinja2/components/footer.html:29
 msgid "help"
 msgstr "Hilfe"
 
 #: jinja2/components/footer.html:32
-#, fuzzy
-#| msgid "Privacy policy"
 msgid "privacy policy"
 msgstr "Datenschutzerklärung"
 
@@ -5250,16 +5226,13 @@ msgid "Type your question or search"
 msgstr "Stellen Sie Ihre Frage; suchen mit <Eingabe>"
 
 #: jinja2/components/logo.html:3
-#, fuzzy, python-format
-#| msgid "Use license logo"
+#, python-format
 msgid "%(site)s logo"
-msgstr "Linzenz-Logo verwenden"
+msgstr "%(site)s Logo"
 
 #: jinja2/components/markdown_help.html:2
-#, fuzzy
-#| msgid "Markdown"
 msgid "Markdown basics"
-msgstr "Markdown"
+msgstr "Markdown Grundlagen"
 
 #: jinja2/components/markdown_help.html:6
 msgid "*italic*"
@@ -5289,8 +5262,6 @@ msgstr "Text"
 
 #: jinja2/components/markdown_help.html:20
 #: jinja2/components/markdown_help.html:24
-#, fuzzy
-#| msgid "Title"
 msgid "title"
 msgstr "Titel"
 
@@ -5311,27 +5282,20 @@ msgid "Two"
 msgstr "Zwei"
 
 #: jinja2/components/markdown_help.html:33
-#, fuzzy
-#| msgid "i-names are not supported"
 msgid "basic HTML tags are also supported"
-msgstr "I-Names werden nicht unterstützt."
+msgstr "Grundlegende HTML-Tags werden auch unterstützt"
 
 #: jinja2/components/meta_nav.html:15
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "users/"
 msgid "users"
-msgstr "Benutzer/"
+msgstr "Benutzer"
 
 #: jinja2/components/meta_nav.html:24
 msgid "badges"
 msgstr "Auszeichnungen"
 
 #: jinja2/components/meta_nav.html:31
-#, fuzzy
-#| msgid "User settings"
 msgid "settings"
-msgstr "Benutzereinstellungen"
+msgstr "Einstellungen"
 
 #: jinja2/components/proxy_author_inputs.html:5
 msgid ""
@@ -5342,10 +5306,8 @@ msgstr ""
 "strong> E-Mail-Adresse unten an."
 
 #: jinja2/components/proxy_author_inputs.html:13
-#, fuzzy
-#| msgid "User name:"
 msgid "User name"
-msgstr "Benutzername:"
+msgstr "Benutzername"
 
 #: jinja2/components/user_nav/inbox_link.html:3
 #, python-format
@@ -5366,10 +5328,9 @@ msgstr "%(new)s gemeldete Posts und %(seen)s vorhergehende"
 
 #: jinja2/components/user_nav/moderation_queue_link.html:10
 #: jinja2/macros.html:828 jinja2/macros.html:829
-#, fuzzy, python-format
-#| msgid "First flagged post"
+#, python-format
 msgid "%(new)s new flagged posts"
-msgstr "Erster gemeldeter Beitrag"
+msgstr "%(new)s neue gemeldete Posts"
 
 #: jinja2/components/user_nav/moderation_queue_link.html:12
 #: jinja2/macros.html:834 jinja2/macros.html:835
@@ -5563,10 +5524,8 @@ msgid "At this time, please post your content at %(link)s"
 msgstr ""
 
 #: jinja2/email/list_emails.html:2
-#, fuzzy
-#| msgid "edited by email"
 msgid "Preview of emails"
-msgstr "Geändert via Email"
+msgstr "Geändert via E-Mail"
 
 #: jinja2/email/list_emails.html:4
 msgid "List of emails sent by Askbot"
@@ -5584,10 +5543,8 @@ msgid "%(author)s %(performed_action)s"
 msgstr "Anonyme Benutzer können nicht %(perform_action)s"
 
 #: jinja2/email/macros.html:52
-#, fuzzy
-#| msgid "Tags"
 msgid "Tags:"
-msgstr "Tags"
+msgstr "Tags:"
 
 #: jinja2/email/moderation_queue_notification/body.html:3
 #, python-format
@@ -5634,10 +5591,8 @@ msgid "Example %(num)s"
 msgstr ""
 
 #: jinja2/email/preview_email.html:19
-#, fuzzy
-#| msgid "Subject line"
 msgid "Subject"
-msgstr "Betreffzeile"
+msgstr "Betreff"
 
 #: jinja2/email/preview_email.html:20
 msgid "Body text (below, email styling preserved)"
@@ -5840,30 +5795,22 @@ msgid "upvote"
 msgstr "positiv bewerten"
 
 #: jinja2/faq_static.html:37
-#, fuzzy
-#| msgid "delete comments"
 msgid "add comments"
-msgstr "Kommentare löschen"
+msgstr "Kommentare hinzufügen "
 
 #: jinja2/faq_static.html:42 models/__init__.py:910
 msgid "downvote"
 msgstr "negativ bewerten"
 
 #: jinja2/faq_static.html:46
-#, fuzzy
-#| msgid "answer own questions"
 msgid " accept own answer to own questions"
-msgstr "Beantworte eigene Fragen"
+msgstr " Beantworte eigene Fragen"
 
 #: jinja2/faq_static.html:50
-#, fuzzy
-#| msgid "retag questions"
 msgid "retag other's questions"
 msgstr "Tags dieser Frage verändern"
 
 #: jinja2/faq_static.html:55
-#, fuzzy
-#| msgid "Edit community wiki posts"
 msgid "edit community wiki questions"
 msgstr "Als „Community Wiki“ markierte Fragen beantworten"
 
@@ -5934,10 +5881,8 @@ msgid "If this approach is not for you, we respect your choice."
 msgstr ""
 
 #: jinja2/faq_static.html:79
-#, fuzzy
-#| msgid "Stellar Question"
 msgid "Still have questions?"
-msgstr "Exzellente Frage"
+msgstr "Weitere Fragen?"
 
 #: jinja2/faq_static.html:80
 #, python-format
@@ -5947,25 +5892,18 @@ msgid ""
 msgstr ""
 
 #: jinja2/feedback.html:3
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "feedback/"
 msgid "Feedback"
-msgstr "Bewertung/"
+msgstr "Feedback"
 
 #: jinja2/feedback.html:6
-#, fuzzy
-#| msgid "Thanks for the feedback!"
 msgid "Give us your feedback!"
-msgstr "Vielen Dank für Ihr Feedback!"
+msgstr "Geben Sie und Feedback!"
 
 #: jinja2/feedback.html:23
 msgid "(to hear from us please enter a valid email or check the box below)"
 msgstr ""
 
 #: jinja2/feedback.html:30 jinja2/feedback.html:39
-#, fuzzy
-#| msgid "this field is required"
 msgid "(this field is required)"
 msgstr "Dieses Feld wird benötigt"
 
@@ -5988,11 +5926,8 @@ msgstr ""
 
 #: jinja2/group_messaging/home.html:10
 #: jinja2/group_messaging/home_thread_details.html:7
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "complete/"
 msgid "compose"
-msgstr "Abgeschlossen/"
+msgstr "Erstellen"
 
 #: jinja2/group_messaging/home.html:25 jinja2/group_messaging/home.html:43
 msgid "Send"
@@ -6041,18 +5976,12 @@ msgstr "Es gibt bisher keine Nachrichten…"
 #: jinja2/groups.html:3 jinja2/groups.html:7
 #: jinja2/question/sidebar_sharing_tools.html:66
 #: jinja2/tags/list_bulk_tag_subscription.html:15
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "groups/"
 msgid "Groups"
-msgstr "Gruppen/"
+msgstr "Gruppen"
 
 #: jinja2/groups.html:12
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "groups/"
 msgid "All groups"
-msgstr "Gruppen/"
+msgstr "Alle Gruppen"
 
 #: jinja2/groups.html:14
 #, fuzzy
@@ -6091,16 +6020,13 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: jinja2/help_static.html:8
-#, fuzzy, python-format
-#| msgid "Welcome message"
+#, python-format
 msgid "Welcome %(username)s,"
-msgstr "Willkommensnachricht"
+msgstr "Willkommen %(username)s,"
 
 #: jinja2/help_static.html:10
-#, fuzzy
-#| msgid "Welcome message"
 msgid "Welcome,"
-msgstr "Willkommensnachricht"
+msgstr "Willkommen,"
 
 #: jinja2/help_static.html:14
 #, python-format
@@ -6130,10 +6056,8 @@ msgid ""
 msgstr ""
 
 #: jinja2/help_static.html:27
-#, fuzzy
-#| msgid "Please enter your question"
 msgid "Please search before asking your questions"
-msgstr "Bitte geben Sie hier Ihre Frage ein"
+msgstr "Bitte nutze Sie die Suche bevor Sie eine Frage stellen"
 
 #: jinja2/help_static.html:28
 msgid ""
@@ -6302,10 +6226,8 @@ msgid "flag offensive"
 msgstr "Frage melden"
 
 #: jinja2/macros.html:25
-#, fuzzy
-#| msgid "remove flags"
 msgid "remove flag"
-msgstr "Meldungen löschen"
+msgstr "Meldung löschen"
 
 #: jinja2/macros.html:72
 #, python-format
@@ -6326,10 +6248,8 @@ msgid "retag"
 msgstr "Tags ändern"
 
 #: jinja2/macros.html:214
-#, fuzzy
-#| msgid "show all tags"
 msgid "add tags"
-msgstr "alle Tags anzeigen"
+msgstr "Tags hinzufügen"
 
 #: jinja2/macros.html:260 jinja2/macros.html:266
 msgid "Leave this group"
@@ -6360,16 +6280,12 @@ msgid "add a comment"
 msgstr "Kommentar hinzufügen"
 
 #: jinja2/macros.html:355
-#, fuzzy
-#| msgid "delete comments"
 msgid "see more comments"
-msgstr "Kommentare löschen"
+msgstr "Zeige mehr Kommentare"
 
 #: jinja2/macros.html:375
-#, fuzzy
-#| msgid "post comments"
 msgid "upvote comment"
-msgstr "Kommentare schreiben"
+msgstr "Für Kommentar stimmen"
 
 #: jinja2/macros.html:401 jinja2/question/answer_controls.html:4
 #: jinja2/question/question_controls.html:5 jinja2/question/title.html:14
@@ -6385,28 +6301,20 @@ msgid "more"
 msgstr "mehr"
 
 #: jinja2/macros.html:407
-#, fuzzy
-#| msgid "delete comments"
 msgid "delete this comment"
-msgstr "Kommentare löschen"
+msgstr "Kommentar löschen"
 
 #: jinja2/macros.html:413
-#, fuzzy
-#| msgid "Accept own answer"
 msgid "convert to answer"
-msgstr "Eigene Antwort erlauben"
+msgstr "In Antwort umwandeln"
 
 #: jinja2/macros.html:448
-#, fuzzy
-#| msgid "Comment"
 msgid "Comments"
-msgstr "Kommentar"
+msgstr "Kommentare"
 
 #: jinja2/macros.html:615
-#, fuzzy
-#| msgid "Anonymous"
 msgid "anonymous user"
-msgstr "Anonymous"
+msgstr "Anonymer Benutzer"
 
 #: jinja2/macros.html:627
 #, fuzzy, python-format
@@ -6415,11 +6323,8 @@ msgid "%(username)s's website is %(url)s"
 msgstr "%(username)s Karma ist %(reputation)s"
 
 #: jinja2/macros.html:643 jinja2/macros.html:708 jinja2/macros.html:768
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "revisions/"
 msgid "previous"
-msgstr "Korrekturen/"
+msgstr "vorherige"
 
 #: jinja2/macros.html:651
 msgid "first"
@@ -6441,10 +6346,8 @@ msgid "next page"
 msgstr "Nächste Seite"
 
 #: jinja2/macros.html:715
-#, fuzzy
-#| msgid "First retag"
 msgid "first page"
-msgstr "Erste Tag-Bearbeitung"
+msgstr "Erste Seite"
 
 #: jinja2/macros.html:851
 #, python-format
@@ -6462,16 +6365,12 @@ msgstr ""
 "aktiviere Javascript im Browser, <a href=“%(noscript_url)s”>so geht’s</a>"
 
 #: jinja2/moderation/blank_state.html:2
-#, fuzzy
-#| msgid "Moderation queue has items"
 msgid "Moderation queue is empty."
-msgstr "Moderationsliste hat Einträge"
+msgstr "Moderationsliste hat keine Einträge"
 
 #: jinja2/moderation/messages.html:10
-#, fuzzy
-#| msgid "more"
 msgid "show more"
-msgstr "mehr"
+msgstr "mehr…"
 
 #: jinja2/moderation/moderation_header.html:5
 #, fuzzy
@@ -6596,11 +6495,8 @@ msgid ""
 msgstr ""
 
 #: jinja2/question/question_controls.html:25
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "reopen/"
 msgid "reopen"
-msgstr "Wieder &ouml;ffnen/"
+msgstr "Wieder öffnen"
 
 #: jinja2/question/question_controls.html:30
 msgid "close"
@@ -6611,17 +6507,13 @@ msgid "merge"
 msgstr "Zusammenführen"
 
 #: jinja2/question/sidebar.html:12
-#, fuzzy
-#| msgid "followed"
 msgid "Unfollow"
-msgstr "gefolgt"
+msgstr "Nicht mehr folgen"
 
 #: jinja2/question/sidebar.html:13 jinja2/question/sidebar.html:15
 #: jinja2/question/sidebar.html:21
-#, fuzzy
-#| msgid "followed"
 msgid "Follow"
-msgstr "gefolgt"
+msgstr "Folgen"
 
 #: jinja2/question/sidebar.html:14 jinja2/question/sidebar.html:19
 msgid "Following"
@@ -6635,10 +6527,8 @@ msgstr[0] "%(count)s Follower"
 msgstr[1] "%(count)s Follower"
 
 #: jinja2/question/sidebar.html:34 jinja2/question/sidebar.html:35
-#, fuzzy
-#| msgid "subscribe to all tags"
 msgid "subscribe to the rss feed"
-msgstr "alle Tags abonnieren"
+msgstr "Den RSS-Feed abonnieren"
 
 #: jinja2/question/sidebar.html:44
 msgid "Stats"
@@ -6746,10 +6636,8 @@ msgid "starting over"
 msgstr "Beginne von vorne"
 
 #: jinja2/questions/index.html:7
-#, fuzzy
-#| msgid "Question"
 msgid "Questions"
-msgstr "Frage"
+msgstr "Fragen"
 
 #: jinja2/questions/question_summary_stats.html:5
 msgid "view"
@@ -6782,10 +6670,8 @@ msgid "reset author"
 msgstr "Autor zurücksetzen"
 
 #: jinja2/questions/questions_header.html:37
-#, fuzzy
-#| msgid "Suggested tags"
 msgid "reset tags"
-msgstr "Vorgeschlagene Tags"
+msgstr "Tags zurücksetzen"
 
 #: jinja2/questions/questions_header.html:40
 #: jinja2/questions/questions_header.html:43
@@ -6824,10 +6710,8 @@ msgstr "Interessante Tags"
 #: jinja2/questions/sidebar_tag_selector.html:20
 #: jinja2/questions/sidebar_tag_selector.html:43
 #: jinja2/questions/sidebar_tag_selector.html:66
-#, fuzzy
-#| msgid "Mandatory tags"
 msgid "Enter tag"
-msgstr "Verbindliche Tags"
+msgstr "Tag eingeben"
 
 #: jinja2/questions/sidebar_tag_selector.html:27
 msgid "Ignored tags"
@@ -6840,10 +6724,8 @@ msgid "Subscribed tags"
 msgstr "nur abonnierte Tags"
 
 #: jinja2/questions/sidebar_tag_selector.html:88
-#, fuzzy
-#| msgid "Enable email alerts"
 msgid "Email me alerts for"
-msgstr "Aktiviere Email Benachrichtigungen"
+msgstr "Aktiviere E-Mail Benachrichtigungen"
 
 #: jinja2/questions/sidebar_tag_selector.html:101
 #, fuzzy
@@ -6885,8 +6767,6 @@ msgid "Revision %(rev)s"
 msgstr "Korrekturen/"
 
 #: jinja2/search_posts/context_link.html:7 models/post.py:720
-#, fuzzy
-#| msgid "Comment"
 msgid "comment"
 msgstr "Kommentar"
 
@@ -6913,10 +6793,8 @@ msgid "of"
 msgstr "Von"
 
 #: jinja2/search_posts/posts_nav.html:25
-#, fuzzy
-#| msgid "gold"
 msgid "go"
-msgstr "Gold"
+msgstr "Gehe"
 
 #: jinja2/subscribe_for_tags.html:3 jinja2/subscribe_for_tags.html:5
 #, fuzzy
@@ -6996,10 +6874,8 @@ msgid "Manage tag subscription"
 msgstr "eine Tagbeschreibung wurde erstellt"
 
 #: jinja2/tags/list_bulk_tag_subscription.html:8
-#, fuzzy
-#| msgid "Create"
 msgid "Create new"
-msgstr "Erstellen"
+msgstr "Neu erstellen"
 
 #: jinja2/tags/list_bulk_tag_subscription.html:11
 msgid "Date"
@@ -7007,11 +6883,8 @@ msgstr "Datum"
 
 #: jinja2/tags/list_bulk_tag_subscription.html:13 jinja2/users/index.html:8
 #: jinja2/users/title_row.html:6
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "users/"
 msgid "Users"
-msgstr "Benutzer/"
+msgstr "Benutzer"
 
 #: jinja2/tags/list_bulk_tag_subscription.html:17
 msgid "Action"
@@ -7022,17 +6895,12 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: jinja2/tags/list_bulk_tag_subscription.html:53
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "delete/"
 msgid "Delete"
-msgstr "L&ouml;schen/"
+msgstr "L&ouml;schen"
 
 #: jinja2/tags/no_tags.html:3
-#, fuzzy
-#| msgid "Post not found"
 msgid "Nothing found."
-msgstr "Beitrag nicht gefunden"
+msgstr "Nichts gefunden"
 
 #: jinja2/tags/no_tags.html:5
 #, fuzzy
@@ -7041,17 +6909,12 @@ msgid "There are no tags."
 msgstr "Sehr aktiv in einem bestimmten Tag"
 
 #: jinja2/user_inbox/base.html:9
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "questions"
 msgid "Sections:"
-msgstr "Fragen"
+msgstr "Abschnitte:"
 
 #: jinja2/user_inbox/base.html:14
-#, fuzzy
-#| msgid "message"
 msgid "messages"
-msgstr "Nachricht"
+msgstr "Nachrichten"
 
 #: jinja2/user_inbox/base.html:19
 #, python-format
@@ -7069,8 +6932,6 @@ msgid "inbox - group join requests"
 msgstr "Inbox – Gruppenbeitrittsgesuche"
 
 #: jinja2/user_inbox/group_join_requests.html:26
-#, fuzzy
-#| msgid "approved"
 msgid "Approve"
 msgstr "Freigegeben"
 
@@ -7213,23 +7074,17 @@ msgid "Sorry, there was an unexpected error."
 msgstr "Entschuldigung, es gibt diesen Benutzernamen nicht"
 
 #: jinja2/user_profile/user.html:11
-#, fuzzy, python-format
-#| msgid "%(username)s gravatar image"
+#, python-format
 msgid "%(username)s's profile"
-msgstr "%(username)s Gravatar-Bild"
+msgstr "%(username)s Profil"
 
 #: jinja2/user_profile/user.html:14
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "signout/"
 msgid "sign out"
-msgstr "Abmelden/"
+msgstr "Abmelden"
 
 #: jinja2/user_profile/user.html:17
-#, fuzzy
-#| msgid "please login"
 msgid "manage logins"
-msgstr "Bitte einloggen"
+msgstr "Anmeldedaten ändern"
 
 #: jinja2/user_profile/user_activity.html:5
 #: jinja2/user_profile/user_tabs.html:38 models/user.py:322
@@ -7256,8 +7111,8 @@ msgstr ""
 #, python-format
 msgid "<span class=\"count\">%(counter)s</span> Badge"
 msgid_plural "<span class=\"count\">%(counter)s</span> Badges"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "<span class=“count”>%(counter)s</span> Auszeichnung"
+msgstr[1] "<span class=“count”>%(counter)s</span> Auszeichnungen"
 
 #: jinja2/user_profile/user_badges.html:21
 #, fuzzy
@@ -7272,10 +7127,8 @@ msgid "Edit user profile"
 msgstr "Vollständiges Benutzerprofil"
 
 #: jinja2/user_profile/user_edit.html:7
-#, fuzzy
-#| msgid "edit posts"
 msgid "edit profile"
-msgstr "Einträge bearbeiten"
+msgstr "Profil bearbeiten"
 
 #: jinja2/user_profile/user_edit.html:17
 #: jinja2/user_profile/user_info_avatar_block.html:10
@@ -7288,17 +7141,12 @@ msgstr "(Kann nicht geändert werden)"
 
 #: jinja2/user_profile/user_edit.html:74
 #: jinja2/user_profile/user_email_subscriptions.html:145
-#, fuzzy
-#| msgid "updated tags"
 msgid "Update"
-msgstr "Aktualisierte Tags"
+msgstr "Änderungen speichern"
 
 #: jinja2/user_profile/user_email_subscriptions.html:6
-#, fuzzy
-#| msgctxt "urls"
-#| msgid "subscriptions/"
 msgid "subscriptions"
-msgstr "Abonnements/"
+msgstr "E-Mail Benachrichtigungen"
 
 #: jinja2/user_profile/user_email_subscriptions.html:10
 msgid ""
@@ -7307,16 +7155,18 @@ msgid ""
 "emails - select 'no email' on all items below.<br/>Updates are only sent "
 "when there is any new activity on selected items."
 msgstr ""
+"<span class=‘big strong’>Frequenz für E-Mail Benachrichtigungen ändern</"
+"span> Erhalte E-´Mail Benachrichtigungen über interessante Inhalte. Wenn Sie "
+"keine E-Mail erhalten möchten – wählen Sie “niemals” bei allen Optionen.<br/"
+">Nachrichten werden nur bei Aktivität bei den ausgewählten Optionen gesendet."
 
 #: jinja2/user_profile/user_email_subscriptions.html:12
 msgid "Note: language settings also apply to the email subscriptions"
 msgstr ""
 
 #: jinja2/user_profile/user_email_subscriptions.html:146
-#, fuzzy
-#| msgid "No email"
 msgid "Stop Email"
-msgstr "Keine E-Mail"
+msgstr "Keine E-Mail erhalten"
 
 #: jinja2/user_profile/user_email_subscriptions.html:153
 #, fuzzy
@@ -7356,10 +7206,8 @@ msgid "following"
 msgstr "gefolgt"
 
 #: jinja2/user_profile/user_info_table.html:9
-#, fuzzy
-#| msgid "upload files"
 msgid "update profile"
-msgstr "Dateien hochladen"
+msgstr "Profil ändern"
 
 #: jinja2/user_profile/user_info_table.html:16
 #, fuzzy
@@ -7368,10 +7216,8 @@ msgid "real name"
 msgstr "Echter Name"
 
 #: jinja2/user_profile/user_info_table.html:22
-#, fuzzy
-#| msgid "No email"
 msgid "email"
-msgstr "Keine E-Mail"
+msgstr "E-Mail"
 
 #: jinja2/user_profile/user_info_table.html:28
 #, fuzzy
@@ -7385,10 +7231,8 @@ msgid "member since"
 msgstr "Mitglied seit"
 
 #: jinja2/user_profile/user_info_table.html:45
-#, fuzzy
-#| msgid "least voted"
 msgid "last seen"
-msgstr "Am seltensten bewertet"
+msgstr "Zuletzt gesehen"
 
 #: jinja2/user_profile/user_info_table.html:51
 #, fuzzy
@@ -7404,7 +7248,7 @@ msgstr "Dokumentation"
 
 #: jinja2/user_profile/user_info_table.html:76
 msgid "todays unused votes"
-msgstr ""
+msgstr "Heute noch nicht genutzte Stimmen"
 
 #: jinja2/user_profile/user_info_table.html:82
 #: jinja2/user_profile/user_tabs.html:42 jinja2/user_profile/user_votes.html:4
@@ -7433,28 +7277,24 @@ msgid "My primary language is"
 msgstr ""
 
 #: jinja2/user_profile/user_manage_account.html:4
-#, fuzzy
-#| msgid "account/"
 msgid "manage account"
-msgstr "Zugang/"
+msgstr "Account verwalten"
 
 #: jinja2/user_profile/user_manage_account.html:8
 msgid ""
 "To delete this account or obtain its data, please\n"
 "  use one of the options below"
 msgstr ""
-"Um diesen Account zu löschen oder seine Daten zu erhaltenn\n"
-"  Nutzen Sie eine der unterstehenden Optionen"
+"Um diesen Account zu löschen oder seine Daten zu erhalten\n"
+"  nutzen Sie eine der unterstehenden Optionen"
 
 #: jinja2/user_profile/user_manage_account.html:12
 msgid "Download backup files:"
 msgstr "Backup Dateien herunterladen:"
 
 #: jinja2/user_profile/user_manage_account.html:29
-#, fuzzy
-#| msgid "remove anonymity"
 msgid "Remove account"
-msgstr "Anonymit&auml;t entfernen"
+msgstr "Account löschen"
 
 #: jinja2/user_profile/user_manage_account.html:31
 msgid "Ask to remove account"
@@ -7476,10 +7316,8 @@ msgstr "Exportiere Daten"
 
 #: jinja2/user_profile/user_moderate.html:4
 #: jinja2/user_profile/user_tabs.html:47
-#, fuzzy
-#| msgid "moderator"
 msgid "moderation"
-msgstr "Moderator"
+msgstr "Moderation"
 
 #: jinja2/user_profile/user_moderate.html:9
 #, fuzzy, python-format
@@ -7596,6 +7434,8 @@ msgid ""
 "Your network is empty. Would you like to follow someone? - Just visit their "
 "profiles and click \"follow\""
 msgstr ""
+"Sie folgen niemandem. Möchten Sie jemandem folgen? – Besuchten Sie das "
+"Profil und klicken “Folgen”"
 
 #: jinja2/user_profile/user_network.html:21
 #, fuzzy, python-format
@@ -7629,16 +7469,12 @@ msgid "overview"
 msgstr "Überblick"
 
 #: jinja2/user_profile/user_tabs.html:21
-#, fuzzy
-#| msgid "Enable email alerts"
 msgid "email alerts"
-msgstr "Aktiviere Email Benachrichtigungen"
+msgstr "E-Mail Benachrichtigungen"
 
 #: jinja2/user_profile/user_tabs.html:57
-#, fuzzy
-#| msgid "account/"
 msgid "account"
-msgstr "Zugang/"
+msgstr "Account"
 
 #: jinja2/user_profile/user_tags.html:3
 #, python-format
@@ -7649,7 +7485,7 @@ msgstr[1] ""
 
 #: jinja2/user_profile/user_votes.html:27
 msgid "There were no votes."
-msgstr ""
+msgstr "Keine Stimmen erhalten."
 
 #: jinja2/users/group_settings.html:7
 #, fuzzy
@@ -8800,7 +8636,7 @@ msgstr "per Mail eingetragener Inhalt"
 
 #: models/reply_by_email.py:114
 msgid "edited by email"
-msgstr "Geändert via Email"
+msgstr "Geändert via E-Mail"
 
 #: models/repute.py:141 models/repute.py:142
 msgid "badge data"
@@ -9122,7 +8958,7 @@ msgstr "Diese E-Mail Adresse ist nicht autorisiert"
 
 #: utils/forms.py:269
 msgid "Your email <i>(never shared)</i>"
-msgstr "Ihre Email-Adresse <i>(niemals geteilt)</i>"
+msgstr "Ihre E-Mail-Adresse <i>(niemals geteilt)</i>"
 
 #: utils/forms.py:271
 msgid "email address is required"
