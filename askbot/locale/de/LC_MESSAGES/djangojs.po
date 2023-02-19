@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Alexander Lieder <enormitas@gmail.com>, 2013
 # kakulukia <andy@freilandkiwis.de>, 2017-2018
@@ -15,14 +15,15 @@ msgstr ""
 "Project-Id-Version: askbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-16 13:08-0500\n"
-"PO-Revision-Date: 2020-08-16 19:55+0000\n"
+"PO-Revision-Date: 2023-02-17 10:44+0100\n"
 "Last-Translator: evgeny <evgeny.fadeev@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/askbot/askbot/language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: media/js/editors/folded_editor.js:38 media/js/post.js:4949
 msgid "Sorry, you have only read access"
@@ -41,9 +42,7 @@ msgid "message sent"
 msgstr "Nachricht wurde verschickt"
 
 #: media/js/group_messaging.js:187
-msgid ""
-"Did you mean to send your message to muliple users? Use comma instead of "
-"whitespaces"
+msgid "Did you mean to send your message to muliple users? Use comma instead of whitespaces"
 msgstr "Wolltest Du die Nachricht an mehrere Nutzer schicken? Nutze Komma statt Leerzeichen"
 
 #: media/js/group_messaging.js:191
@@ -66,9 +65,7 @@ msgid "Please add one or more login methods."
 msgstr "Bitte ergänzen Sie mindestens eine Zugangsmethode."
 
 #: media/js/jquery-openid/jquery.authenticator.js:93
-msgid ""
-"You don't have a method to log in right now, please add one or more by "
-"clicking any of the icons below."
+msgid "You don't have a method to log in right now, please add one or more by clicking any of the icons below."
 msgstr "Sie haben bisher keine Zugangsmethode ausgewählt, bitte ergänzen Sie mindestens eine Zugangsmethode durch Klick auf das entsprechende Symbol."
 
 #: media/js/jquery-openid/jquery.authenticator.js:147
@@ -126,8 +123,7 @@ msgstr "Registrieren"
 msgid "loading..."
 msgstr "Lade..."
 
-#: media/js/post.js:137 media/js/post.js:176 media/js/post.js:229
-#: media/js/post.js:253
+#: media/js/post.js:137 media/js/post.js:176 media/js/post.js:229 media/js/post.js:253
 msgid "enter > %(length)s character"
 msgid_plural "enter > %(length)s characters"
 msgstr[0] "Eingabe > %(length)s Zeichen"
@@ -168,14 +164,13 @@ msgstr "Lade Vorschau"
 msgid "Merge"
 msgstr "Zusammenführen"
 
-#: media/js/post.js:511 media/js/utils/modal_dialog.js:9
-#: media/js/utils/text_property_editor.js:48
+#: media/js/post.js:511 media/js/utils/modal_dialog.js:9 media/js/utils/text_property_editor.js:48
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: media/js/post.js:561
 msgid "draft saved..."
-msgstr "Der Entwurf wurde gespeichert"
+msgstr "Entwurf gespeichert…"
 
 #: media/js/post.js:781
 #, javascript-format
@@ -198,7 +193,7 @@ msgstr "Nicht angemeldete Benutzer können Fragen nicht abonnieren"
 
 #: media/js/post.js:825 media/js/post.js:1616
 msgid "anonymous users cannot vote"
-msgstr "Gastbenutzer können nicht abstimmen "
+msgstr "Gastbenutzer können nicht abstimmen"
 
 #: media/js/post.js:827
 msgid "anonymous users cannot flag offensive posts"
@@ -230,7 +225,7 @@ msgstr "Entferne Markierung"
 
 #: media/js/post.js:1135 media/js/post.js:1166
 msgid "flag offensive"
-msgstr "Bist du dir sicher, dass dieser Beitrag Spam, unerwünschte Werbung, Beleidigungen, illegale oder unangebrachte Inhalte enthält?"
+msgstr "Sind Sie sicher, dass dieser Beitrag Spam, unerwünschte Werbung, Beleidigungen, illegale oder unangebrachte Inhalte enthält?"
 
 #: media/js/post.js:1191 media/js/post.js:1687
 msgid "undelete"
@@ -277,10 +272,9 @@ msgstr "%s Zeichen verbleibend"
 
 #: media/js/post.js:2348
 msgid "maximum comment length reached"
-msgstr "Maximale Kommentar-L&auml;nge erreicht."
+msgstr "Maximale Kommentar-L&auml;nge erreicht"
 
-#: media/js/post.js:2451 media/js/post.js:3370 media/js/post.js:4921
-#: media/js/user/group_adder_widget.js:17 media/js/utils/editable.js:323
+#: media/js/post.js:2451 media/js/post.js:3370 media/js/post.js:4921 media/js/user/group_adder_widget.js:17 media/js/utils/editable.js:323
 msgid "cancel"
 msgstr "Abbrechen"
 
@@ -306,10 +300,9 @@ msgstr "Löschen des Kommentars bestätigen"
 
 #: media/js/post.js:3087
 msgid "please sign in or register to post comments"
-msgstr "Bitte logge Dich ein, damit Du Kommentare posten kannst. "
+msgstr "Bitte logge Dich ein, damit Du Kommentare posten kannst"
 
-#: media/js/post.js:3364 media/js/post.js:4185 media/js/post.js:4378
-#: media/js/utils/editable.js:318
+#: media/js/post.js:3364 media/js/post.js:4185 media/js/post.js:4378 media/js/utils/editable.js:318
 msgid "save"
 msgstr "speichern"
 
@@ -355,7 +348,7 @@ msgstr "Bitte gebe mindestens ein Tag ein"
 
 #: media/js/post.js:4328
 msgid "already exists at the current level!"
-msgstr "Existiert bereits"
+msgstr "Existiert bereits!"
 
 #: media/js/post.js:4364
 msgid "add category"
@@ -379,7 +372,7 @@ msgstr "Geteilt mit folgenden Gruppen:"
 
 #: media/js/searchbar/drop_menu.js:198
 msgid "To see search results, 2 or more characters may be required"
-msgstr "Um Suchergebnisse zu erhalten, sind mindestens 2 Buchstaben erforderlich."
+msgstr "Um Suchergebnisse zu sehen sind mindestens 2 Buchstaben erforderlich."
 
 #: media/js/searchbar/drop_menu.js:220
 msgid "Ask Your Question"
@@ -459,28 +452,27 @@ msgstr ""
 
 #: media/js/user/manage_reject_reasons_dialog.js:90
 msgid "Looks there are some things to fix:"
-msgstr "Es gibt wohl aus, dass es noch einige Probleme gibt, die behoben werden müssen"
+msgstr "Einige Probleme müssen behoben werden:"
 
 #: media/js/user/manage_reject_reasons_dialog.js:158
 msgid "Please provide description."
-msgstr "Bitte eine Beschreibung angeben"
+msgstr "Bitte eine Beschreibung angeben."
 
 #: media/js/user/manage_reject_reasons_dialog.js:161
 msgid "Please provide details."
-msgstr "Bitte Details angeben"
+msgstr "Bitte Details angeben."
 
 #: media/js/user/manage_reject_reasons_dialog.js:248
 msgid "A reason must be selected to delete one."
 msgstr "Ein Grund muss angegeben werden, um löschen zu können."
 
-#: media/js/user/post_moderation_controls.js:77
-#: media/js/user/response_notifs.js:30 media/js/user/response_notifs.js:107
+#: media/js/user/post_moderation_controls.js:77 media/js/user/response_notifs.js:30 media/js/user/response_notifs.js:107
 msgid "Please select at least one item"
 msgstr "Wählen Sie mindestens einen Eintrag aus"
 
 #: media/js/user/post_moderation_controls.js:113
 msgid "Load more items."
-msgstr "Lade mehr "
+msgstr "Lade mehr Einträge."
 
 #: media/js/utils.js:206
 msgid "must be shorter than %(max_chars)s character"
@@ -533,8 +525,7 @@ msgstr "Wähle ein Bild, das du einfügen möchtest"
 msgid "Allowed file types are:"
 msgstr "Die erlaubten Dateitypen sind:"
 
-#: media/js/utils/file_upload_dialog.js:249
-#: media/tinymce/plugins/askbot_attachment/editor_plugin.js:35
+#: media/js/utils/file_upload_dialog.js:249 media/tinymce/plugins/askbot_attachment/editor_plugin.js:35
 msgid "Or paste file url here"
 msgstr "Oder füge hier die URL der Datei ein"
 
@@ -582,11 +573,11 @@ msgstr "deaktiviert"
 
 #: media/jslib/timeago.js:97
 msgid "Jan"
-msgstr "Jan."
+msgstr "Jan"
 
 #: media/jslib/timeago.js:98
 msgid "Feb"
-msgstr "Feb."
+msgstr "Feb"
 
 #: media/jslib/timeago.js:99
 msgid "Mar"
@@ -594,7 +585,7 @@ msgstr "März"
 
 #: media/jslib/timeago.js:100
 msgid "Apr"
-msgstr "Apr."
+msgstr "Apr"
 
 #: media/jslib/timeago.js:101
 msgid "May"
@@ -610,23 +601,23 @@ msgstr "Juli"
 
 #: media/jslib/timeago.js:104
 msgid "Aug"
-msgstr "Aug."
+msgstr "Aug"
 
 #: media/jslib/timeago.js:105
 msgid "Sep"
-msgstr "Sept."
+msgstr "Sep"
 
 #: media/jslib/timeago.js:106
 msgid "Oct"
-msgstr "Okt."
+msgstr "Okt"
 
 #: media/jslib/timeago.js:107
 msgid "Nov"
-msgstr "Nov."
+msgstr "Nov"
 
 #: media/jslib/timeago.js:108
 msgid "Dec"
-msgstr "Dez."
+msgstr "Dez"
 
 #: media/jslib/timeago.js:118
 #, javascript-format
@@ -779,14 +770,10 @@ msgstr "Überschrift"
 #~ msgstr "sorry, you cannot accept your own answer"
 
 #~ msgid "please confirm offensive"
-#~ msgstr ""
-#~ "are you sure this post is offensive, contains spam, advertising, malicious "
-#~ "remarks, etc.?"
+#~ msgstr "are you sure this post is offensive, contains spam, advertising, malicious remarks, etc.?"
 
 #~ msgid "please confirm removal of offensive flag"
-#~ msgstr ""
-#~ "are you sure this post is offensive, contains spam, advertising, malicious "
-#~ "remarks, etc.?"
+#~ msgstr "are you sure this post is offensive, contains spam, advertising, malicious remarks, etc.?"
 
 #~ msgid "Post deleted"
 #~ msgstr "your post has been deleted"
