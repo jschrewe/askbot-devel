@@ -29,7 +29,7 @@ msgstr ""
 "Project-Id-Version: askbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-07 11:57+0100\n"
-"PO-Revision-Date: 2023-02-19 18:39+0100\n"
+"PO-Revision-Date: 2023-02-20 13:55+0100\n"
 "Last-Translator: Jan Schrewe, 2023\n"
 "Language-Team: German (http://www.transifex.com/askbot/askbot/language/de/)\n"
 "Language: de\n"
@@ -1040,7 +1040,7 @@ msgstr ""
 
 #: conf/forum_data_rules.py:86
 msgid "Check to enable community wiki feature"
-msgstr "Auswählen, um die Community-Wiki-Funktion zu aktivieren."
+msgstr "Auswählen, um die Community-Wiki-Funktion zu aktivieren"
 
 #: conf/forum_data_rules.py:95
 msgid "Allow logged in users ask anonymously"

@@ -14,6 +14,9 @@
           {{ form.title.errors }}
         {% endif %}
       </div>
+      <div class="help-text">
+        Ihre Frage in einem Fragesatz zusammengefasst. Wird auf der Übersichtsseite als Titel der Frage angezeigt.
+      </div>
     </div>
   </div>
 
@@ -41,6 +44,11 @@
       {% endif %}
     </div>
     {{ macros.edit_post(form, settings) }}
+    {% if form.text.help_text %}
+      <p class="help-text">
+        {{ form.text.help_text }}
+      </p>
+      {% endif %}
 {% endif %}
 
   {% include "ask/tags_field.html" %}
