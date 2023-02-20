@@ -5,7 +5,7 @@
   data-text-validator="askbot.validators.questionDetailsValidator"
   >{{ csrf_input }}
   <div class="form-item form-group ask-form-bar">
-    <label for="id_title">{{ form.title.label }}</label>
+    <label for="id_title">Fragesatz</label>
     <div id="askFormBar" class="search-bar">
       <input id="id_title" class="questionTitleInput" name="title" autocomplete="off"
         value="{% if form.initial.title %}{{form.initial.title|escape}}{% endif %}"/>
@@ -14,6 +14,9 @@
           {{ form.title.errors }}
         {% endif %}
       </div>
+      <p class="help-text">
+        Ihre Frage in einem Fragesatz zusammengefasst. Wird auf der Übersichtsseite als Titel der Frage angezeigt.
+      </p>
     </div>
   </div>
 
@@ -41,6 +44,11 @@
       {% endif %}
     </div>
     {{ macros.edit_post(form, settings) }}
+    {% if form.text.help_text %}
+      <p class="help-text">
+        {{ form.text.help_text }}
+      </p>
+      {% endif %}
 {% endif %}
 
   {% include "ask/tags_field.html" %}
