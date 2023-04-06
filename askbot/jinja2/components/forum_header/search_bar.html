@@ -10,7 +10,8 @@
   {% endif %}
   method="get"
 >
-  <div class="js-search-bar{% if query %} js-cancelable{% endif %}">
+  <div class="navbar-item js-search-bar{% if query %} js-cancelable{% endif %}">
+    <div class="field has-addons mb-0">
     {% if not settings.SEARCH_FRONTEND_SRC_URL %}
       {% if active_tab == "tags" %}
         <input type="hidden" name="t" value="tag"/>
@@ -18,20 +19,35 @@
       {% elif active_tab == "users" %}
         <input type="hidden" name="t" value="user"/>
       {% endif %}
-      <input
-        class="js-search-input"
-        type="text"
-        autocomplete="off"
-        value="{{ query|escape if query != None else '' }}"
-        name="query"
-        placeholder="{% trans %}Type your question or search{% endtrans %}"
-      />
-      <button class="btn js-cancel-search-btn with-times-icon"
-        {% if not query %}{# query is only defined by questions view (active_tab) #}
-            style="display: none;"
-        {% endif %}
-      ></button>
-      <button value="search" name="search" class="btn js-search-btn with-search-icon"></button>
+      <div class="control">
+        <input
+          class="js-search-input input is-rounded"
+          type="text"
+          autocomplete="off"
+          value="{{ query|escape if query != None else '' }}"
+          name="query"
+          placeholder="{% trans %}Type your question or search{% endtrans %}"
+          style="width:375px;"
+        />
+      </div>
+      {% if query %}{# query is only defined by questions view (active_tab) #}
+      <div class="control">
+        <button class="button js-cancel-search-btn with-times-icon">
+          <span class="icon">
+            <i class="fas fa-xmark"></i>
+          </span>
+        </button>
+      </div>
+      {% endif %}
+      <div class="control">
+        <button value="search" name="search" class="button is-rounded js-search-btn with-search-icon">
+          <span class="icon">
+            <i class="fas fa-magnifying-glass"></i>
+          </span>
+        </button>
+    </div>
     {% endif %}
+    </div>
+    </div>
   </div>
 </form>

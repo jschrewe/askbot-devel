@@ -1,17 +1,19 @@
-<h1 class="js-editable"
+<h1 class="js-editable level-left"
   id="js-question-title-{{ question.pk}}"
   data-get-text-url="{{ url('get_question_title') }}?question_id={{ question.pk }}"
   data-save-text-url="{{ url('set_question_title') }}?question_id={{ question.pk }}"
   data-save-text-param-name="title"
   data-validated-text-param-name="title"
   data-min-lines="1"
-  data-editor-type="plain"
+  data-editor-type="input"
   data-validator="askbot.validators.titleValidator"
 >
-  <div class="js-editable-content">{{ thread.get_title()|escape }}</div>
+  <div class="js-editable-content level-item title is-2">{{ thread.get_title()|escape }}</div>
+  <div class="control ml-6 mb-3">
   <button id="js-edit-btn-question-title-{{ question.pk }}"
-    class="js-edit action-link"
+    class="js-edit action-link level-item button is-small"
   >{% trans %}edit{% endtrans %}</button>
-  <div class="js-editable-controls">
+  </div>
+  <div class="js-editable-controls field is-grouped mb-5">
   </div>
 </h1>

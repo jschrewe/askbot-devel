@@ -1,6 +1,13 @@
-{% import "macros.html" as macros %}
 <div id="js-questions">
-  {% for thread in threads.object_list %}
-      {{ thread.get_summary_html(search_state=search_state, visitor=request.user) }}
-  {% endfor %}
+  {% for row in threads.object_list|batch(2, '&nbsp;') %}
+    <div class="columns mt-3">
+      {% for col in row %}
+      <div class="column">
+        {% if col is not string %}
+          {{ col.get_summary_html(search_state=search_state, visitor=request.user) }}
+        {% endif %}
+      </div>
+      {% endfor %} 
+    </div>
+  {% endfor %} 
 </div>

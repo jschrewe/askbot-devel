@@ -132,3 +132,31 @@ SimpleEditor.prototype.createDom = function () {
 
     textarea.on('change paste keyup keydown', this.getAutoResizeHandler());
 };
+
+class InputEditor extends SimpleEditor {
+    constructor(attrs) {
+        super(attrs);
+    }
+
+    createDom() {
+        this._mirror = $(document.createElement('div'));
+        
+        let input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.classList.add('input');
+        let wrapper = document.createElement('div');
+        wrapper.classList.add('control');
+        wrapper.append(input);
+        this._element = document.createElement('div');
+        this._element.classList.add('field');
+        this._element.classList.add('mr-3');
+        this._element.append(wrapper);
+
+        this._textarea = $(input);
+
+        if (this._text) {
+            input.val(this._text);
+        }
+
+    }
+}

@@ -15,7 +15,7 @@ var AutoCompleter = function (options) {
         multipleSeparator: ' ',//a single character
         inputClass: 'js-ac-input',
         loadingClass: 'js-ac-loading',
-        resultsClass: 'js-ac-results',
+        resultsClass: 'js-ac-results dropdown-menu',
         selectClass: 'js-ac-select',
         queryParamName: 'q',
         limitParamName: 'limit',
@@ -561,11 +561,11 @@ AutoCompleter.prototype.showResults = function (results, filter) {
     var numResults = results.length;
     if (numResults === 0) return;
     var self = this;
-    var $ul = $('<ul></ul>');
+    var $ul = $('<div class="dropdown-content"></div>');
     var i, result, $li, extraWidth, first = false, $first = false;
     for (i = 0; i < numResults; i++) {
         result = results[i];
-        $li = $('<li>' + this.showResult(result.value, result.data) + '</li>');
+        $li = $('<a class="dropdown-item">' + this.showResult(result.value, result.data) + '</a>');
         $li.data('value', result.value);
         $li.data('data', result.data);
         $ul.append($li);
@@ -579,7 +579,7 @@ AutoCompleter.prototype.showResults = function (results, filter) {
         }
     }
 
-    $ul.children('li').click(function () {
+    $ul.children('a').click(function () {
         var $this = $(this);
         self.selectItem($this);
     }).mousedown(function () {

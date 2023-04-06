@@ -1,5 +1,22 @@
 <!-- template header.html -->
-<header {% if settings.SHOW_LOGO %}class="with-logo"{% endif %}>
+<header>
+<nav class="navbar is-light" role="navigation" aria-label="forum navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="questionNavigation" class="navbar-menu">
+    {% include "components/user_nav/index.html" %}
+    {% include "components/meta_nav.html" %}
+  </div>
+</nav>
+</header>
+
+<!--<header {% if settings.SHOW_LOGO %}class="with-logo"{% endif %}>
   <div class="content-wrapper">
     <div class="header-block1">
       {% if settings.SHOW_LOGO %}

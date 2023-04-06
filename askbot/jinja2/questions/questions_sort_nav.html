@@ -1,5 +1,5 @@
-<nav class="js-questions-sort-nav components--sort-nav">
-  <span class="components--sort-nav--label">{% trans %}Sort by{% endtrans %}</span>
+<div class="tabs is-right">
+  <ul>
   {% if show_sort_by_relevance %}
     {% include "questions/questions_sort_by_relevance.html" %}
   {% endif %}
@@ -31,4 +31,5 @@
                                   desc_tooltip=gettext('click to see most voted questions'),
                                   current_sort_method=sort,
                                   search_state=search_state)}}
-</nav>
+</ul>
+</div>

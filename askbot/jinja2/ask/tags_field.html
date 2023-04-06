@@ -1,11 +1,11 @@
-<div class="form-item question-tags form-group">
+<div class="form-item question-tags form-group field">
   {% if settings.TAG_SOURCE == 'category-tree' %}
     {% include "widgets/three_column_category_selector.html" %}
     <div class="tags-desc">{% trans %}Tags{% endtrans %}</div>
     {% include "widgets/tag_editor.html" %}
   {% else %}
     <div class="tags-label">
-      <label for="id_tags">
+      <label class="label" for="id_tags">
       {% if tags_are_required %}
         {% if mandatory_tags %}
           {% trans %}tags{% endtrans %}
@@ -19,9 +19,9 @@
         {% trans %}Tags{% endtrans %}
       {% endif %}
       </label>
-      <span class="form-error">{{ form.tags.errors }}</span><br/>
     </div>
-    {{ form.tags }}<br/>
-    <p class="help-text">{{ form.tags.help_text }}</p>
+    <input type="text" name="tags" size="50" autocomplete="off" id="id_tags" class="prompt input">
+    <span class="form-error help is-error">{{ form.tags.errors }}</span>
+    <p class="help-text help">{{ form.tags.help_text }}</p>
   {% endif %}
 </div>

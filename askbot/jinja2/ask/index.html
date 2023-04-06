@@ -6,7 +6,7 @@
 {# main contents of ask form is in the template input_bar #}
 {% block sidebar %}
   {% if settings.EDITOR_TYPE == 'markdown' %}
-    <div class="sidebar-box">
+    <div class="sidebar-box box">
       {% include "/components/markdown_help.html" %}
     </div>
   {% endif %}

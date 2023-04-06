@@ -1,7 +1,7 @@
 {% if user and user.is_authenticated and user.is_administrator() %}
   {# admin can post answers or questions on behalf of anyone. #}
-  <div class="proxy-author-inputs">
-    <div class="proxy-author-help">
+  <div class="proxy-author-inputs mb-4">
+    <div class="proxy-author-help label">
       {% trans %}To post on behalf of someone else, enter user name <strong>and</strong> email below.{% endtrans %}
     </div>
     <div class="proxy-author-inputs-row">
@@ -12,17 +12,19 @@
           type="text"
           placeholder="{% trans %}User name{% endtrans %}"
           autocomplete="off"
+          class="input mb-2"
         />
-        <div class="form-error">{{ post_form.post_author_username.errors }}</div>
+        <div class="form-error help is-error">{{ post_form.post_author_username.errors }}</div>
       </div>
       <div>
         <input
           id="js-post-author-email"
           name="post_author_email"
-          type="text"
+          type="email"
           placeholder="{% trans %}Email address{% endtrans %}"
+          class="input"
         />
-        <div class="form-error">{{ post_form.post_author_email.errors }}</div>
+        <div class="form-error help is-error">{{ post_form.post_author_email.errors }}</div>
       </div>
     </div>
   </div>

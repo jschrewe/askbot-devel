@@ -148,16 +148,7 @@ function pickedTags() {
     var unpickTag = function (from_target, tagname, reason, send_ajax) {
         //send ajax request to delete tag
         var deleteTagLocally = function () {
-            var tag = from_target[tagname];
-            var li = tag.parent();
-            var ul = li.parent();
             from_target[tagname].remove();
-            if (li.prop('tagName') === 'LI') {
-                li.remove();
-            }
-            if (ul.find('li').length === 0) {
-              ul.removeClass('js-has-tags');
-            }
             delete from_target[tagname];
         };
         if (send_ajax) {
@@ -259,9 +250,7 @@ function pickedTags() {
 
             tag.setDeleteHandler(delete_handler);
             var tag_element = tag.getElement();
-            var li = $('<li></li>');//assumption that we have a list
-            li.append(tag_element);
-            to_tag_container.append(li);
+            to_tag_container.append(tag_element);
             to_tag_container.addClass('js-has-tags');
             to_target[tag_name] = tag_element;
         });

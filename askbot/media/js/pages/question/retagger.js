@@ -96,7 +96,7 @@
 
   RetagForm.prototype.createDom = function () {
     var form = $('<form method="post"></form>');
-    var tagInput = $('<input class="js-tags-input" type="text" autocomplete="off" name="tags" size="30"/>');
+    var tagInput = $('<input class="js-tags-input input" type="text" autocomplete="off" name="tags" size="30"/>');
     form.append(tagInput);
     this._element = form;
     var me = this;
@@ -134,24 +134,22 @@
     var tag = new Tag();
     tag.setName(tagName);
     tag.setLinkable(true);
-    var li = this.makeElement('li');
-    li.append(tag.getElement());
-    var retagBtnCtr = $('.js-retag-btn-ctr');
-    retagBtnCtr.before(li);
+    this.getElement().prepend(tag.getElement());
   };
 
   QuestionTags.prototype.setTags = function (tagsList) {
-    var tagLiElements = this._element.find('> :not(.js-retag-btn-ctr)');
-    tagLiElements.remove();
+    var tagListElem = this._element.find('> .tag');
+    tagListElem.remove();
     if (tagsList.length === 0) {
-      $('.js-retag-btn.with-tags-icon').removeClass('js-hidden');
-      $('.js-retag-btn:not(.with-tags-icon)').addClass('js-hidden');
+      $('.js-retag-btn.with-tags-icon').removeClass('is-hidden');
+      $('.js-retag-btn:not(.with-tags-icon)').addClass('is-hidden');
       return;
     } else {
-      $('.js-retag-btn.with-tags-icon').addClass('js-hidden');
-      $('.js-retag-btn:not(.with-tags-icon)').removeClass('js-hidden');
+      $('.js-retag-btn.with-tags-icon').addClass('is-hidden');
+      $('.js-retag-btn:not(.with-tags-icon)').removeClass('is-hidden');
     }
     var me = this;
+    tagsList = tagsList.reverse();
     $.each(tagsList, function (_, tagName) {
       me.addTag(tagName);
     });

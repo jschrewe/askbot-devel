@@ -1,24 +1,40 @@
 <!-- template secondary_header.html -->
-<div class="forum-header">
-  <div class="content-wrapper">
+<nav class="navbar is-primary" role="navigation" aria-label="questions navigation">
+  <div id="questionNavigation" class="navbar-menu">
+    <div class="navbar-start">
     {% if active_tab == 'ask' %}
-      <a class="with-home-icon" href="{{ url('questions') }}"></a>
-      <div class="scope-selector ask-message">{{ settings.WORDS_PLEASE_ASK_YOUR_QUESTION_HERE|escape }}</div>
+    <a
+      href="{{ url('questions') }}"
+      class="navbar-item"
+    >
+      <span class="icon">
+        <i class="fas fa-house"></i>
+      </span>
+    </a>
+      <div class="navbar-item">
+        {{ settings.WORDS_PLEASE_ASK_YOUR_QUESTION_HERE|escape }}
+      </div>
+    </div>
     {% else %}
-      <div class="search-bar-container">
-        <div class="search-bar-col">
-          <a class="with-home-icon" href="{{ url('questions') }}"></a>
+          <a
+            href="{{ url('questions') }}"
+            class="navbar-item"
+          >
+          <span class="icon">
+            <i class="fas fa-house"></i>
+          </span>
+          </a>
           {% if need_scope_links %}
             {% include "components/forum_header/scope_nav.html" %}
           {% endif %}
           {% include "components/forum_header/search_bar.html" %}
         </div>
-        <div class="ask-btn-col">
-          {% if show_ask_button %}
-          {% include "components/forum_header/ask_button.html" %}
-          {% endif %}
-        </div>
       </div>
+      {% if show_ask_button %}
+      <div class="navbar-end">
+        {% include "components/forum_header/ask_button.html" %}
+      </div>
+      {% endif %}
     {% endif %}
   </div>
-</div>
+</nav>

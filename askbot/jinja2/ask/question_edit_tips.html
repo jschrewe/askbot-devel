@@ -1,12 +1,30 @@
+<article class="message mb-5 {% if request.user.is_anonymous and not settings.ALLOW_ASK_UNREGISTERED %}is-warning{% else %}is-dark{% endif %}">
+  <div class="message-header">
+    <span class="icon">
+      <i class="fas fa-circle-exclamation"></i>
+    </span>
+    <span>
+      Hinweis
+    </span>
+    <p></p>
+  </div>
+  <div class="message-body content">
 {% if settings.QUESTION_INSTRUCTIONS|trim %}
   {{ settings.QUESTION_INSTRUCTIONS|safe }}
 {% else %}
-  <ul>
     {% if request.user.is_anonymous and not settings.ALLOW_ASK_UNREGISTERED %}
-    <li class="warning">{% trans %}since you are not logged in right now, you will be asked to sign in or register after making your post{% endtrans %}</li>
+      <p class="title is-5">
+        {% trans %}since you are not logged in right now, you will be asked to sign in or register after making your post{% endtrans %}
+      </p>
+      <hr />
     {% endif %}
-    <li>{{ settings.WORDS_ASK_A_QUESTION_INTERESTING_TO_THIS_COMMUNITY|escape }}</li>
-    <li>{% trans %}provide enough details{% endtrans %}</li>
-    <li>{% trans %}be clear and concise{% endtrans %}</li>
-  </ul>
+    <p class="title is-5">
+      {{ settings.WORDS_ASK_A_QUESTION_INTERESTING_TO_THIS_COMMUNITY|escape }}
+    </p>
+    <ul>
+      <li>{% trans %}provide enough details{% endtrans %}</li>
+      <li>{% trans %}be clear and concise{% endtrans %}</li>
+    </ul>
 {% endif %}
+  </div>
+</article>

@@ -1,24 +1,23 @@
-{% if 'SIDEBAR_MAIN_HEADER'|show_block_to(request.user) %}
-<div class="sibebar-box">
-  {{ settings.SIDEBAR_MAIN_HEADER }}
-</div>
-{% endif %}
+<div class="panel is-primary">
+  <p class="panel-heading">
+    Nach Tags filtern
+  </p>
 
-{% if contributors and settings.SIDEBAR_MAIN_SHOW_AVATARS %}
-  {% include "questions/sidebar_contributors.html" %}
-{% endif %}
+  <div class="panel-block is-block">
+    {% include "questions/sidebar_tag_search.html" %}
+  </div>
 
-{% if settings.TAG_SEARCH_INPUT_ENABLED %}
-  {% include "questions/sidebar_tag_search.html" %}
-{% endif %}
 
 {% if request.user.is_authenticated and settings.SIDEBAR_MAIN_SHOW_TAG_SELECTOR %}
   {% include "questions/sidebar_tag_selector.html" %}
 {% endif %}
 
 {% if tags and settings.SIDEBAR_MAIN_SHOW_TAGS %}
-<div class="sidebar-box siderbar-tags-box">
-  <h2>{% trans %}Tags{% endtrans %}</h2>
+<div class="sidebar-box siderbar-tags-box panel-block is-block pb-4">
+  <h2 class="title is-6 mb-2">{% trans %}Tags{% endtrans %}</h2>
+  <p class="is-size-7 mb-3">
+    Alle benutzte Tags
+  </p>
   {% include "widgets/related_tags.html" %}
 </div>
 {% endif %}
@@ -28,3 +27,4 @@
   {{ settings.SIDEBAR_MAIN_FOOTER }}
 </div>
 {% endif %}
+</div>

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block layout_class %}two-col{% endblock %}
 {% block body %}
-<div class='col-with-sidebar'>
-  <main>
+<div class="columns mt-6">
+  <main class="column is-three-quarters">
     {% block content%}
     {% endblock%}
   </main>
-  <aside class='js-sidebar-col'>
+  <aside class='column js-sidebar-col'>
     {% block sidebar%}
     {% endblock%}
   </aside>

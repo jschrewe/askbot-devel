@@ -1,13 +1,14 @@
 {% import "macros.html" as macros %}
+<div class="box">
 {% if 'SIDEBAR_QUESTION_HEADER'|show_block_to(request.user) %}
 <div class="sidebar-box">
     {{ settings.SIDEBAR_QUESTION_HEADER }}
 </div>
 {% endif %}
-<div class="sidebar-box vote-buttons">
-  <h2>{{ settings.WORDS_QUESTION_TOOLS|escape }}</h2>
+<div class="sidebar-box vote-buttons block">
+  <h2 class="title is-5 mb-3">Antworteinstellungen</h2>
     <div class="follow-question">
-      <button class="js-follow-question-btn btn"
+      <button class="js-follow-question-btn button is-info is-fullwidth is-light"
           data-is-on="{{ favorited|as_js_bool }}"
           data-off-prompt-text="{% trans %}Unfollow{% endtrans %}"
           data-on-prompt-text="{% trans %}Follow{% endtrans %}"
@@ -21,10 +22,10 @@
               {% trans %}Follow{% endtrans %}
           {% endif %}
       </button>
-      <div class="js-question-follower-count">
+      <div class="js-question-follower-count block mt-3">
           {% set follower_count = thread.favourite_count %}
           {% if follower_count > 0 %}
-              {% trans count=follower_count %}{{count}} follower{% pluralize %}{{count}} followers{% endtrans %}
+              {% trans count=follower_count %}{{count}} Person folgt{% pluralize %}{{count}} Personen folgen{% endtrans %} dieser Frage
           {% endif %}
       </div>
     </div>
@@ -40,16 +41,16 @@
 {#% include "question/sidebar_sharing_tools.html" %#}
 
 {% if settings.SIDEBAR_QUESTION_SHOW_META %}
-<div class="sidebar-box">
-    <h2>{% trans %}Stats{% endtrans %}</h2>
+<div class="sidebar-box block">
+    <h2 class="title is-5 mb-3">{% trans %}Stats{% endtrans %}</h2>
     <p>
-        {% trans %}Asked{% endtrans %}: <strong>{{ macros.timeago(question.added_at) }}</strong>
+        Gefragt {{ macros.timeago(question.added_at) }}
     </p>
     <p>
-        {% trans %}Seen{% endtrans %}: <strong>{{ thread.view_count|intcomma }} {% trans %}times{% endtrans %}</strong>
+        {{ thread.view_count|intcomma }} {% trans %}times{% endtrans %} gelesen
     </p>
     <p>
-        {% trans %}Last updated{% endtrans %}: <strong title="{{ thread.last_activity_at }}">{{thread.last_activity_at|diff_date}}</strong>
+        {% trans %}Last updated{% endtrans %} {{thread.last_activity_at|diff_date}}
     </p>
 </div>
 {% endif %}
@@ -57,7 +58,7 @@
 {% if similar_threads.data() and settings.SIDEBAR_QUESTION_SHOW_RELATED %}
     {#% cache 1800 "related_questions" related_questions question.id language_code %#}
     <div class="sidebar-box">
-      <h2>{{ settings.WORDS_RELATED_QUESTIONS|escape }}</h2>
+      <h2 class="title is-5 mb-3">{{ settings.WORDS_RELATED_QUESTIONS|escape }}</h2>
         <div class="related-questions">
             {% for thread_dict in similar_threads.data() %}
             <p>
@@ -74,3 +75,4 @@
         {{ settings.SIDEBAR_QUESTION_FOOTER }}
     </div>
 {% endif %}
+</div>

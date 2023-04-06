@@ -180,14 +180,10 @@
   with_edit_link=False
 )
 -%}
-  <ul class="tags{% if tags %} js-has-tags{% endif %}{% if css_class %} {{css_class}}{% endif %}">
+  <div class="tags{% if tags %} js-has-tags{% endif %}{% if css_class %} {{css_class}}{% endif %}">
     {% if tags %}
-      {% if label %}
-        <li class="js-search-tags-label">{{ label }}</li>
-      {% endif %}
       {%- for tag in tags -%}
         {% filter trim %}
-        <li>
             {{ tag_widget(
                 tag,
                 deletable=deletable,
@@ -195,27 +191,30 @@
                 search_state=search_state,
                 truncate_long_tag=False
             )}}
-        </li>
         {% endfilter %}
       {%- endfor -%}
     {% endif %}
     {% if with_edit_link %}
-      <li class="js-retag-btn-ctr">
-        <span
-          class="js-retag-btn action-link {% if not tags %}js-hidden{% endif %}"
-          data-question-id="{{ question_id }}"
-        >
-          {% trans %}retag{% endtrans %}
-        </span>
-        <span
-          class="js-retag-btn action-link {% if tags %}js-hidden{% endif %} with-tags-icon"
+      <div class="field is-grouped ml-6 mb-3">
+        <p class="control">
+          <button
+            class="js-retag-btn action-link button is-small {% if not tags %}is-hidden{% endif %}"
+            data-question-id="{{ question_id }}"
+          >
+            {% trans %}retag{% endtrans %}
+          </button>
+        </p>
+        <p class="control">
+        <button
+          class="js-retag-btn action-link button is-small {% if tags %}is-hidden{% endif %} with-tags-icon"
           data-question-id="{{ question_id }}"
         >
           {% trans %}add tags{% endtrans %}
-        </span>
-      </li>
+        </button>
+      </p>
+      </div>
     {% endif %}
-  </ul>
+    </div>
 {%- endmacro -%}
 
 {%- macro user_group_link(group) -%}
@@ -303,9 +302,9 @@
       {% set search_state=search_state|get_empty_search_state %}
   {% endif %}
   {% filter trim %}
-    <div class="js-tag {% if deletable %} js-deletable-tag{% endif %}">
+    <span class="js-tag {% if deletable %} js-deletable-tag{% endif %} tag">
         <{% if is_link %}a{% else %}span{% endif %}
-            class="js-tag-name{% if css_class %} {{ css_class }}{% endif %}"
+            class="js-tag-name{% if css_class %} {{ css_class }}{% endif %} has-text-grey-dark"
             rel="tag"
             {% if is_link and not tag.endswith('*') %}
             href="{{ search_state.add_tag(tag).full_url() }}"
@@ -318,19 +317,19 @@
             {%- endif -%}
         </{% if is_link %}a{% else %}span{% endif %}>
         {%- if deletable -%}
-            <span class="js-delete-icon">&times;</span>
+            <button class="js-delete-icon"></button>
         {%- endif %}
         {% if extra_content %}
-        <span class="js-tag-extra-content">{{ extra_content }}</span>
+          <span class="js-tag-extra-content has-text-grey-light">{{ extra_content }}</span>
         {% endif %}
-    </div>
+    </span>
   {% endfilter %}
 {%- endmacro -%}
 
 {%- macro radio_select(name = None, value = None, choices = None) -%}
   {% for choice in choices %}
     {% set id = "id_" ~ name ~ "_" ~ choice[0] %}
-    <label class="radio-button-choice" for="{{ id }}">
+    <label class="radio-button-choice radio" for="{{ id }}">
       <input
         id="{{ id }}"
         name="{{ name }}"
@@ -478,22 +477,37 @@ for the purposes of the AJAX comment editor #}
     button_sort_criterium + "asc" or "desc"
 #}
   {% if current_sort_method == sort_by + "-asc" %}{# "worst" first #}
+    <li class="is-active">
     <a href="{{ search_state.change_sort(sort_by+"-desc").full_url() }}"
        class="js-sort-by-{{sort_by}} js-selected js-with-sort-ascending-icon"
        title="{{desc_tooltip}}"
        data-sort-by="{{sort_by}}"
     >
+      <span>
       {{label}}
+      </span>
+      <span class="icon is-small">
+        <i class="fas fa-sort-up"></i>
+      </span>
     </a>
+  </li>
   {% elif current_sort_method == sort_by + "-desc" %}{# "best first" #}
+  <li class="is-active">
     <a href="{{ search_state.change_sort(sort_by+"-asc").full_url() }}"
        class="js-sort-by-{{sort_by}} js-selected js-with-sort-descending-icon"
        title="{{asc_tooltip}}"
        data-sort-by="{{sort_by}}"
     >
-      {{label}}
+    <span>
+    {{label}}
+    </span>
+    <span class="icon is-small">
+      <i class="fas fa-sort-down"></i>
+    </span>
     </a>
+  </li>
   {% else %}{# default, when other button is active #}
+    <li>
     <a href="{{ search_state.change_sort(sort_by+"-desc").full_url() }}"
        class="js-sort-by-{{sort_by}}"
        data-sort-by="{{sort_by}}"
@@ -501,6 +515,7 @@ for the purposes of the AJAX comment editor #}
     >
       {{label}}
     </a>
+  </li>
   {% endif %}
   <script type="text/javascript">{# need to pass on text translations to js #}
     askbot['data']['sortButtonData'] = askbot['data']['sortButtonData'] || {};
@@ -512,13 +527,18 @@ for the purposes of the AJAX comment editor #}
   </script>
 {%- endmacro %}
 
-{%- macro checkbox_in_div(checkbox_field, class = 'checkbox') -%}
-    <div{% if class %} class="{{class}}"{% endif %}
-        title="{{checkbox_field.help_text}}">
-        {{ checkbox_field.errors }}
-        {{ checkbox_field }}
-        {{ checkbox_field.label_tag() }}
-    </div>
+{%- macro checkbox_in_div(checkbox_field, class = '') -%}
+<div class="field{% if class %} {{class}}{% endif %}">
+  <div class="control">
+  <label class="checkbox" for="{{ checkbox_field.id_for_label }}">
+    <input id="{{ checkbox_field.auto_id }}" type="checkbox">
+    {{ checkbox_field.label }}
+  </label>
+  <p class="help is-error">
+    {{ checkbox_field.errors }}
+  </p>
+</div>
+</div>
 {%- endmacro -%}
 
 {%- macro edit_post(post_form, settings, post_html=None) -%}

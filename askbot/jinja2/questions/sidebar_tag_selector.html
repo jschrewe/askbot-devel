@@ -1,7 +1,12 @@
 {# todo - maybe disable navigation from ignored tags here when "hide" is on - with js? #}
 {% import "macros.html" as macros %}
-<div class="sidebar-box sidebar-tags-box">
-  <h2>{% trans %}Interesting tags{% endtrans %}</h2>
+
+<div class="panel-block is-block">
+<h2 class="title is-6 mb-2">Interessante Tags</h2>
+  <p class="is-size-7 mb-3">
+    Hier können Sie Tags, die Sie interessieren speichern und die Fragen danach filtern
+  </p>
+  <div class="sidebar-tags-box"></div>  
   {{
     macros.tag_list_widget(
       interesting_tag_names,
@@ -10,42 +15,49 @@
       search_state=search_state
     )
   }}
-  {# todo - add this via js
-      "remove '%(tag_name)s' from the list of interesting tags"|
-      format(tag_name=tag_name)
-  #}
-  <div class="input-with-button">
-    <input id="js-interesting-tag-input"
+  <div class="field has-addons">
+    <div class="control">
+      <input id="js-interesting-tag-input"
       autocomplete="off"
       placeholder="{% trans %}Enter tag{% endtrans %}"
       type="text"
+      class="input"
     />
-    <input id="js-interesting-tag-add" class="btn btn-muted" type="submit" value="{% trans %}add{% endtrans %}"/>
+    </div>
+    <div class="control">
+      <input id="js-interesting-tag-add" class="button is-info" type="submit" value="Hinzufügen"/>
+    </div>
   </div>
 </div>
-<div class="sidebar-box sidebar-tags-box">
-  <h2>{% trans %}Ignored tags{% endtrans %}</h2>
-  {{
-    macros.tag_list_widget(
-      ignored_tag_names,
-      deletable=True,
-      css_class='js-ignored-tags js-marked-tags',
-      search_state=search_state
-    )
-  }}
-  {# todo: add this via javascript
-    "remove '%(tag_name)s' from the list of ignored tags"|
-    format(tag_name=tag_name)
-  #}
-  <div class="input-with-button">
-    <input id="js-ignored-tag-input"
-      autocomplete="off"
-      placeholder="{% trans %}Enter tag{% endtrans %}"
-      type="text"
-    />
-    <input id="js-ignored-tag-add" class="btn btn-muted" type="submit" value="{% trans %}add{% endtrans%}"/>
+
+<div class="panel-block is-block">
+  <h2 class="title is-6 mb-2">Ignorierte Tags</h2>
+    <p class="is-size-7 mb-3">
+      Hier können Sie Tags, die Sie <b>nicht</b> interessieren speichern und die Fragen danach filtern
+    </p>
+    <div class="sidebar-tags-box"></div>  
+    {{
+      macros.tag_list_widget(
+        ignored_tag_names,
+        deletable=True,
+        css_class='js-ignored-tags js-marked-tags',
+        search_state=search_state
+      )
+    }}
+    <div class="field has-addons">
+      <div class="control">
+        <input id="js-ignored-tag-input"
+        autocomplete="off"
+        placeholder="{% trans %}Enter tag{% endtrans %}"
+        type="text"
+        class="input"
+      />
+      </div>
+      <div class="control">
+        <input id="js-ignored-tag-add" class="button is-info" type="submit" value="Hinzufügen"/>
+      </div>
+    </div>
   </div>
-</div>
 {% if settings.SUBSCRIBED_TAG_SELECTOR_ENABLED %}
   <div class="sidebar-box sidebar-tags-box">
     <h2>{% trans %}Subscribed tags{% endtrans %}</h2>
@@ -71,9 +83,14 @@
     </div>
   </div>
 {% endif %}
-<div class="sidebar-box tag-filter-sidebar-box">
-  <h2>{{ settings.WORDS_SHOW_ONLY_QUESTIONS_FROM|escape }}</h2>
-  <div id="js-display-tag-filter-control">
+<div class="panel-block is-block tag-filter-sidebar-box">
+  <h2 class="title is-6 mb-2">
+    {{ settings.WORDS_SHOW_ONLY_QUESTIONS_FROM|escape }}
+  </h2>
+    <p class="is-size-7 mb-3">
+      Zeige alle Fragen oder filtere nach den oben ausgewählten Tags
+    </p>
+  <div id="js-display-tag-filter-control" class="control">
     {{
       macros.radio_select(
         name="display_tag_filter_strategy",

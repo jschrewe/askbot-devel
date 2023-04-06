@@ -275,6 +275,7 @@ Editable.prototype.decorate = function(element){
 
   //create container for the editor and buttons
   var editorBox = this.makeElement('div');
+  editorBox.addClass('level-item mb-5')
   this._content.after(editorBox);
   this._editorBox = editorBox;
 
@@ -301,6 +302,8 @@ Editable.prototype.decorate = function(element){
       editor = new TinyMCE();
     }
     editor.setId('tinyMCE-' + this._id);
+  } else if (editorType === 'input') {
+    editor = new InputEditor();
   } else {
     editor = new SimpleEditor({'minLines': minLines});
   }
@@ -320,17 +323,21 @@ Editable.prototype.decorate = function(element){
   this._hideables = $('.js-editable-hide-' + this._id);
 
   var saveBtn = this.makeElement('button');
-  saveBtn.addClass('btn');
-  //saveBtn.addClass('btn btn-primary');
+  saveBtn.addClass('button is-small is-success is-outlined');
   saveBtn.html(gettext('save'));
-  formControls.append(saveBtn);
+  let btnWrap = this.makeElement('p');
+  btnWrap.addClass('control');
+  btnWrap.append(saveBtn)
+  formControls.append(btnWrap);
   this._saveBtn = saveBtn;
 
   var cancelBtn = this.makeElement('button');
-  cancelBtn.addClass('btn');
+  cancelBtn.addClass('button is-small is-danger is-outlined');
   cancelBtn.html(gettext('cancel'));
-  //cancelBtn.addClass('btn');
-  formControls.append(cancelBtn);
+  btnWrap = this.makeElement('p');
+  btnWrap.addClass('control');
+  btnWrap.append(cancelBtn)
+  formControls.append(btnWrap);
   this._cancelBtn = cancelBtn;
 
   if (element.data('withSuppressEmailCheckbox')) {
@@ -362,3 +369,5 @@ Editable.prototype.decorate = function(element){
     editable.decorate($(item));
   });
 })();
+
+

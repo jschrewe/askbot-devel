@@ -1,9 +1,48 @@
-{% from "macros.html" import user_country_flag, tag_list_widget, timeago, user_primary_group %}
-<div class="question-summary">
-  <div class="question-summary-stats-user">
-    {% include "questions/question_summary_stats.html" %} {# 300ms #}
-    {% include "questions/question_summary_user_info.html" %} {# 900ms with groups enabled, 400ms disabled #}
+{% from "macros.html" import tag_list_widget, timeago %}
+
+<div class="card">
+  <div class="card-header has-background-info">
+    <div class="card-header-title">
+      <a class="has-text-white" href="{{ question.get_absolute_url(thread=thread) }}">
+        {{thread.get_title()|escape}}
+      </a>
+    </div>
   </div>
-  <h2><a href="{{ question.get_absolute_url(thread=thread) }}">{{thread.get_title()|escape}}</a></h2> {# get_title - 200ms #}
-  {{ tag_list_widget(thread.get_tag_names(), search_state=search_state, css_class="question-summary-tags") }}
+  <div class="card-content">
+    <div class="block">
+      {{question.get_snippet()|striptags|truncate(200)}}
+    </div>
+    <div class="mb-2">
+      <span class="icon-text">
+        <span class="icon">
+          <i class="fas fa-tags"></i>
+        </span>
+      </span>
+      {{ tag_list_widget(thread.get_tag_names(), search_state=search_state, css_class="question-summary-tags is-inline") }}
+    </div>
+    <p class="has-text-weight-light is-size-7">
+      Geändert {{ timeago(thread.last_activity_at) }} 
+      von <a href="{{ url('user_profile', thread.last_activity_by.id,  thread.last_activity_by.username|slugify) }}">{{thread.last_activity_by.username|escape}}</a>
+    </p>
+  </div>
+  <div class="card-footer has-background-light">
+    <p class="card-footer-item">
+      <span class="icon">
+        <i class="fas fa-eye"></i>
+      </span>
+      <span>{{ thread.view_count|humanize_counter(humanize_zero=True) }}</span>
+    </p>
+    <p class="card-footer-item">
+      <span class="icon">
+        <i class="fas fa-message"></i>
+      </span>
+      <span>{{ thread.get_answer_count(visitor)|humanize_counter(humanize_zero=True) }}</span>
+    </p>
+    <p class="card-footer-item">
+      <span class="icon">
+        <i class="fas fa-thumbs-up"></i>
+      </span>
+      <span>{{question.score|humanize_counter(humanize_zero=True)}}</span>
+    </p>
+  </div>
 </div>
