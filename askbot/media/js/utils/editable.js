@@ -348,9 +348,10 @@ Editable.prototype.decorate = function(element){
       cb.prop('checked', true);
     }
     this._suppressEmailCb = cb;
-    formControls.append(cb);
-    var label = $('<label>' + gettext("minor edit (don't send alerts)") + '</label>');
+    //formControls.append(cb);
+    var label = $('<label class="checbox"> ' + gettext("minor edit (don't send alerts)") + '</label>');
     label.attr('for', cbId);
+    label.prepend(cb)
     formControls.append(label);
   }
 

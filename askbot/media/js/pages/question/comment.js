@@ -62,7 +62,7 @@ Comment.prototype.decorate = function (element) {
     var delete_img = this._element.find('.js-comment-delete-btn');
     if (delete_img.length > 0) {
         this._deletable = true;
-        this._delete_icon = new DeleteIcon(this.deletePrompt);
+        this._delete_icon = new DeleteButton(this.deletePrompt);
         this._delete_icon.setHandler(this.getDeleteHandler());
         this._delete_icon.decorate(delete_img);
     }
@@ -74,7 +74,7 @@ Comment.prototype.decorate = function (element) {
         this._edit_link.decorate(edit_link);
     }
 
-    var convert_link = this._element.find('.js-comment-convert-btn');
+    var convert_link = this._element.find('.repost-comment-as-answer');
     if (this._is_convertible) {
         this._convert_link = new CommentConvertLink(comment_id);
         this._convert_link.decorate(convert_link);
@@ -201,8 +201,8 @@ Comment.prototype.setContent = function (data) {
         var oldEditLink = this._edit_link;
         this._edit_link = new EditLink('action-link js-comment-edit-btn');
         this._edit_link.setHandler(this.getEditHandler());
-        oldEditLink.getElement().replaceWith(this._edit_link.getElement());
-        oldEditLink.dispose();
+        //oldEditLink.getElement().replaceWith(this._edit_link.getElement());
+        //oldEditLink.dispose();
     }
 
     // 9) if comment is moderated - add moderation warning

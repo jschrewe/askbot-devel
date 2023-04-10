@@ -1,6 +1,7 @@
 <div class="new-answer-form">
   {% include "question/new_answer_form_title.html" %}
-  <div class="info-box">
+  <div class="info-box message">
+    <div class="message-body">
     {% if request.user.is_anonymous %}
       {{ settings.WORDS_INSTRUCTION_TO_POST_ANONYMOUSLY|safe }}
     {% elif request.user==question.author  %}
@@ -8,16 +9,17 @@
     {% endif %}
     {{ settings.WORDS_INSTRUCTION_TO_GIVE_ANSWER|safe }}
   </div>
+  </div>
   <div class="js-folded-editor" tabindex="6">
-    <p class="js-folded-editor-trigger"><a>{{ settings.WORDS_ADD_ANSWER|escape }}</a></p>
-    <div class="js-folded-editor-editor">
+    <p class="js-folded-editor-trigger"><a class="button is-primary">{{ settings.WORDS_ADD_ANSWER|escape }}</a></p>
+    <div class="js-folded-editor-editor is-hidden">
       <form class="js-answer-form"
         action="{{ url('answer',  question.id ) }}"
         method="post"
         data-validated-fields="text"
         data-text-validator="askbot.validators.answerValidator"
         >{{ csrf_input }}
-        <div class="js-error js-text-error"></div>
+        <div class="js-error js-text-error notification is-danger is-hidden"></div>
         {% set draft_answer=answer.text.value() %}
         <div class="form-group js-editor-placeholder"
           {% if draft_answer %}data-draft-answer="{{ draft_answer|escape }}"{% endif %}>
@@ -38,7 +40,7 @@
         {% if answer.recaptcha %}
           <div>{{ macros.form_field_with_errors(answer.recaptcha) }}</div>
         {% endif %}
-        <input id="add-answer-btn" type="submit" class="btn" />
+        <input id="add-answer-btn" type="submit" class="btn button is-primary" />
         <script type="text/javascript">
           askbot['functions']['renderAddAnswerButton']();
         </script>

@@ -62,11 +62,10 @@
   PostFlagger.prototype.finishFlagHandler = function(data) {
     if (data.success === 1) {
       if (data.count > 0) {
-        this._flagCounter.html(data.count);
-        this._flagCounter.removeClass('js-hidden');
+        this._flagCounter.children('.flag-counter').text(data.count);
+        this._flagCounter.removeClass('is-hidden');
       } else {
-        this._flagCounter.html('');
-        this._flagCounter.addClass('js-hidden');
+        this._flagCounter.addClass('is-hidden');
       }
       this.updateUnflagButtonVisibility(data.count);
     } else {
@@ -77,17 +76,17 @@
   PostFlagger.prototype.updateUnflagButtonVisibility = function (flagCount) {
     if (askbot.data.userIsAdminOrMod) {
       if (flagCount > 0) {
-        this._unflagBtn.removeClass('js-hidden');
+        this._unflagBtn.removeClass('is-hidden');
       } else {
-        this._unflagBtn.addClass('js-hidden');
+        this._unflagBtn.addClass('is-hidden');
       }
     } else { // for regular user show if this post was flagged by the user
       var flagCountsByPostId = askbot.data.user_flag_counts_by_post_id;
       var postId = this._postId;
       if (flagCountsByPostId[postId.toString()]) {
-        this._unflagBtn.removeClass('js-hidden');
+        this._unflagBtn.removeClass('is-hidden');
       } else {
-        this._unflagBtn.addClass('js-hidden');
+        this._unflagBtn.addClass('is-hidden');
       }
     }
   };

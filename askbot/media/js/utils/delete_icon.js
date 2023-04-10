@@ -34,3 +34,18 @@ DeleteIcon.prototype.setContent = function (content) {
         this._element.html(content);
     }
 };
+
+
+var DeleteButton = function (title) {
+    DeleteIcon.call(title);
+};
+inherits(DeleteButton, DeleteIcon);
+
+DeleteButton.prototype.decorate = function (element) {
+    this._element = element;
+    //this._element.attr('class', 'js-delete-icon');
+    //this._element.attr('title', this._title);
+    if (this._handler !== null) {
+        this.setHandlerInternal();
+    }
+};

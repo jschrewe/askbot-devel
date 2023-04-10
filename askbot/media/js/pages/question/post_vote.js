@@ -106,7 +106,7 @@ var PostVote = (function () {
     init: function () {
       $('.js-post-vote-btn')
         .unbind('click')
-        .click(function (evt) { vote($(evt.target)) });
+        .click(function (evt) { vote($(evt.currentTarget)) });
     }
   };
 })();

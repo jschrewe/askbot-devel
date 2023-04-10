@@ -41,6 +41,7 @@ FoldedEditor.prototype.getOpenHandler = function () {
             editorBox.show();
             var element = me.getElement();
             element.addClass('js-active');
+            element.children('.is-hidden').removeClass('is-hidden');
 
             /* make the editor one shot - once it unfolds it's
             * not accepting any events

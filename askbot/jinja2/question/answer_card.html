@@ -1,13 +1,13 @@
 <a name="{{ answer.id }}"></a>
 {% if answer.old_answer_id %}<a name="{{ answer.old_answer_id }}"></a>{% endif %}
 <div id="js-post-{{ answer.id }}"
-  class="js-post js-answer {% if answer.endorsed %}js-accepted-answer{% endif %} {% if answer.deleted %}js-post-deleted{% endif %}" 
+  class="js-post js-answer columns {% if answer.endorsed %}js-accepted-answer{% endif %} {% if answer.deleted %}js-post-deleted{% endif %}" 
   data-post-id="{{ answer.id }}"
 >
-  <div class="post-vote-controls">
+  <div class="post-vote-controls column  is-one-fifth">
     {% include "question/answer_vote_buttons.html" %}
   </div>
-  <div class="post-content">
+  <div class="post-content column">
     <div class="post-body">
       {% if answer.needs_moderation() %}
         {{ macros.moderated_post_warning(answer) }}
@@ -23,19 +23,24 @@
         data-validator="askbot.validators.answerValidator"
         data-with-suppress-email-checkbox="true"
       >
-        <div class="js-editable-content">{{ answer.summary }}</div>
-        <div class="js-editable-controls"></div>
+        <div class="js-editable-content content">{{ answer.summary }}</div>
+        <div class="js-editable-controls field is-grouped mb-5"></div>
       </div>
-    </div>
-    <div class="js-editable-hide-post-body-{{ answer.pk }}">
-      {{ macros.post_last_updater_and_creator_info(answer, visitor=request.user) }}
-      {#% if answer.id in published_answer_ids %}
-        <p><strong>{% trans %}This response is published{% endtrans %}</strong></p>
-      {% endif %#}
-      {% include "question/answer_controls.html" %}
     </div>
     {% if settings.ANSWER_COMMENTS_ENABLED %}
       {% include "question/answer_comments.html" %}
     {% endif %}
+    <div class="js-editable-hide-post-body-{{ answer.pk }} columns">
+      <div class="column">
+        {{ macros.post_last_updater_and_creator_info(answer, visitor=request.user) }}
+      </div>
+      {#% if answer.id in published_answer_ids %}
+        <p><strong>{% trans %}This response is published{% endtrans %}</strong></p>
+      {% endif %#}
+      <div class="column">
+        {% include "question/answer_controls.html" %}
+      </div>
+    </div>
+    </div>
   </div>
 </div>

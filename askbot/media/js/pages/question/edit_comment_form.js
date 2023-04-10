@@ -169,18 +169,28 @@ EditCommentForm.prototype.getCounterUpdater = function () {
 
     if (commentLength === 0) {
       counter.html(interpolate(gettext('enter at least %s characters'), [minLength]));
-      counter.attr('class', 'js-comment-length-counter js-comment-length-counter-too-short');
+      counter.removeClass(['has-text-warning', 'has-text-success', 'has-text-danger']);
+      counter.addClass('has-text-danger');
+      //counter.attr('class', 'js-comment-length-counter js-comment-length-counter-too-short');
     } else if (commentLength < minLength) {
       counter.html(interpolate(gettext('enter at least %s more characters'), [minLength - commentLength]));
-      counter.attr('class', 'js-comment-length-counter js-comment-length-counter-too-short');
+      counter.removeClass(['has-text-warning', 'has-text-success', 'has-text-danger']);
+      counter.addClass('has-text-danger');
+      //counter.attr('class', 'js-comment-length-counter js-comment-length-counter-too-short');
     } else {
       var maxLength = askbot.data.maxCommentLength;
       if (commentLength > Math.round(0.9 * maxLength)) {
-        counter.attr('class', 'js-comment-length-counter js-comment-length-counter-too-long');
+        //counter.attr('class', 'js-comment-length-counter js-comment-length-counter-too-long');
+        counter.removeClass(['has-text-warning', 'has-text-success', 'has-text-danger']);
+        counter.addClass('has-text-danger');
       } else if (commentLength > Math.round(0.7 * maxLength)) {
-        counter.attr('class', 'js-comment-length-counter js-comment-length-counter-almost-too-long');
+        //counter.attr('class', 'js-comment-length-counter js-comment-length-counter-almost-too-long');
+        counter.removeClass(['has-text-warning', 'has-text-success', 'has-text-danger']);
+        counter.addClass('has-text-warning');
       } else {
-        counter.attr('class', 'js-comment-length-counter');
+//        counter.attr('class', 'js-comment-length-counter');
+        counter.removeClass(['has-text-warning', 'has-text-success', 'has-text-danger']);
+        counter.addClass('has-text-success');
       }
 
       var charsLeft = maxLength - commentLength;
@@ -283,35 +293,35 @@ EditCommentForm.prototype.createDom = function () {
      */
 
     this._controlsBox = this.makeElement('div');
-    this._controlsBox.addClass('js-edit-comment-controls');
+    this._controlsBox.addClass('js-edit-comment-controls mt-3');
     div.append(this._controlsBox);
 
-    this._submit_btn = $('<button class="btn"></button>');
+    this._submit_btn = $('<button class="button is-primary is-small mr-3"></button>');
     addExtraCssClasses(this._submit_btn, 'primaryButtonClasses');
     this._controlsBox.append(this._submit_btn);
-    this._cancel_btn = $('<button class="btn btn-muted"></button>');
+    this._cancel_btn = $('<button class="button is-small"></button>');
     addExtraCssClasses(this._cancel_btn, 'cancelButtonClasses');
     this._cancel_btn.html(gettext('cancel'));
     this._controlsBox.append(this._cancel_btn);
 
-    this._text_counter = $('<span></span>').attr('class', 'js-comment-length-counter');
+    this._text_counter = $('<span class="js-comment-length-counter ml-3 mt-3"></span>');
     this._controlsBox.append(this._text_counter);
 
 
     //if email alerts are enabled, add a checkbox "suppress_email"
     if (askbot.settings.enableEmailAlerts === true) {
-        this._minorEditBox = this.makeElement('div');
-        this._minorEditBox.addClass('js-minor-edit');
+        this._minorEditBox = this.makeElement('label');
+        this._minorEditBox.addClass('js-minor-edit checkbox is-size-7');
         this._controlsBox.append(this._minorEditBox);
         var checkBox = this.makeElement('input');
         checkBox.attr('type', 'checkbox');
         checkBox.attr('name', 'suppress_email');
         checkBox.attr('id', 'suppress_email');
         this._minorEditBox.append(checkBox);
-        var label = this.makeElement('label');
+        /*var label = this.makeElement('label');
         label.attr('for', 'suppress_email');
-        label.html(gettext('minor edit (don\'t send alerts)'));
-        this._minorEditBox.append(label);
+        label.html(gettext('minor edit (don\'t send alerts)'));*/
+        this._minorEditBox.append(' ' + gettext('minor edit (don\'t send alerts)'));
     }
 
 };

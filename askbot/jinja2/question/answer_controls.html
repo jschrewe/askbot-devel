@@ -1,21 +1,35 @@
 {% import "macros.html" as macros %}
-<div id="js-post-controls-{{answer.id}}" class="js-answer-controls js-post-controls" data-post-id="{{answer.id}}">
-  <span id="js-edit-btn-post-body-{{answer.id}}" class="action-link with-edit-icon js-edit">
+<div id="js-post-controls-{{answer.id}}" class="js-answer-controls js-post-controls message is-warning" data-post-id="{{answer.id}}">
+  <div class="message-header">
+    <p>Werkzeuge</p>
+  </div>
+  <div class="message-body">
+  <button id="js-edit-btn-post-body-{{answer.id}}" class="action-link with-edit-icon js-edit button is-small">
+    <span class="icon">
+      <i class="fas fa-pen-to-square"></i>
+    </span>
+    <span>
     {% trans %}edit{% endtrans %}
-  </span>
+    </span>
+  </button>
   {{ macros.post_flag_buttons(answer) }}
-  <span
+  <button
     id='js-post-delete-btn-{{answer.id}}'
-    class="action-link js-post-delete-btn with-delete-icon"
-    data-post-id="{{answer.id}}"
+    class="action-link js-post-delete-btn with-delete-icon button is-small"
+    data-post-id="{{answer.id}}" 
   >
+  <span class="icon">
+    <i class="fas fa-trash-can"></i>
+  </span>
+  <span>
     {% if answer.deleted %}{% trans %}undelete{% endtrans %}{% else %}{% trans %}delete{% endtrans %}{% endif %}
   </span>
+</button>
   {% if request.user.is_authenticated and request.user.is_post_moderator(answer) %}
     {% set is_published=(answer.id in published_answer_ids) %}
-    <span
+    <button
       id="js-post-publish-btn-{{answer.id}}"
-      class="action-link {% if is_published %}js-unpublish-post with-bullhorn-icon with-slashed-icon{% else %}js-publish-post with-bullhorn-icon{% endif %}"
+      class="action-link button is-small {% if is_published %}js-unpublish-post with-bullhorn-icon with-slashed-icon{% else %}js-publish-post with-bullhorn-icon{% endif %}"
       data-post-id={{answer.id}}
     >
       {% if is_published %}
@@ -23,43 +37,62 @@
       {% else %}
         {% trans %}publish{% endtrans %}</a>
       {% endif %}
-    </span>
+</button>
   {% endif %}
-  <a class="action-link with-link-icon"
+  <a class="action-link with-link-icon button is-small"
     href="{{ answer.get_absolute_url(question_post=question) }}"
     title="{% trans %}permanent link{% endtrans %}"
-  >{% trans %}link{% endtrans %}</a>
-  <div class="js-dropdown-menu js-toolbar-dropdown-menu action-link">
-    <div class="js-dropdown-trigger with-caret-down-icon">{% trans %}more{% endtrans %}</div>
-    <ul class="js-dropdown-target">
-      <li id='post-{{answer.id}}-convert'>
+  >
+  <span class="icon">
+    <i class="fas fa-link"></i>
+  </span>
+  <span>
+    {% trans %}link{% endtrans %}
+  </span>
+  </a>
+  <div class="dropdown is-hoverable mt-2">
+    <div class="dropdown-trigger">
+      <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-answer-{{ answer.id }}">
+        <span>{% trans %}more{% endtrans %}</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-answer-{{ answer.id }}" role="menu">
+      <div class="dropdown-content">
         <form class="answer-convert"
           action="{{ url('repost_answer_as_comment_under_question') }}"
           method="post"
+          id='post-{{answer.id}}-convert'
         >
           {{ csrf_input }}
           <input type="hidden" name="answer_id" value="{{answer.id}}"/>
-          <input
-            type="submit"
-            class="action-link"
-            value="{{ settings.WORDS_REPOST_AS_A_QUESTION_COMMENT|escape }}"
-          />
+          <a class="submit-link dropdown-item"> 
+            <span class="icon"> 
+              <i class="fas fa-comment"></i> </span>
+            <span>
+              {{ settings.WORDS_REPOST_AS_A_QUESTION_COMMENT|escape }}
+            </span>
+          </a>
         </form>
-      </li>
-      <li id='post-{{ answer.id }}-repost-as-comment-under-previous-answer'>
         <form class="answer-convert repost-as-comment-under-previous-answer"
           action="{{ url('repost_answer_as_comment_under_previous_answer') }}"
           method="post"
+          id='post-{{ answer.id }}-repost-as-comment-under-previous-answer'
         >
           {{ csrf_input }}
           <input type="hidden" name="answer_id" value="{{ answer.id }}"/>
-          <input type="submit"
-            class="action-link"
-            value="{{ settings.WORDS_REPOST_AS_A_COMMENT_UNDER_THE_OLDER_ANSWER|escape }}"
-          />
+          <a class="submit-link dropdown-item"> 
+              <span class="icon"> 
+                <i class="fas fa-comment"></i> </span>
+              <span>
+                {{ settings.WORDS_REPOST_AS_A_COMMENT_UNDER_THE_OLDER_ANSWER|escape }}
+              </span> 
+          </a>
         </form>
-      </li>
-    </ul>
+      </div>
+  </div>
   </div>
   <script type="text/javascript">
       askbot['functions']['hideConvertAnswerLinks']('{{ answer.id }}');

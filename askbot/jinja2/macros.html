@@ -16,12 +16,24 @@
 {%- endmacro -%}
 
 {%- macro post_flag_buttons(post) -%}
-  <span id="js-post-flag-btn-{{post.id}}" class="action-link with-flag-icon js-post-flag-btn">
-    {% trans %}flag offensive{% endtrans %}
-    <span class="js-post-flag-count {% if post.offensive_flag_count == 0 %}js-hidden{% endif %}"
-    >{{ post.offensive_flag_count }}</span>
+  <button id="js-post-flag-btn-{{post.id}}" class="action-link js-post-flag-btn button is-small">
+    <span class="icon">
+      <i class="fas fa-flag"></i>
+    </span>
+    <span>
+      {% trans %}flag offensive{% endtrans %}
+      </span>
+  </button>
+  <span class="js-post-flag-count {% if post.offensive_flag_count == 0 %}is-hidden{% endif %} icon-text"
+    >
+    <span class="icon">
+      <i class="fas fa-flag"></i>
+    </span>
+    <span class="flag-counter">
+      {{ post.offensive_flag_count }} 
+    </span>
   </span>
-  <span id="js-post-unflag-btn-{{post.id}}" class="action-link with-flag-icon js-post-unflag-btn {% if post.offensive_flag_count == 0 %}js-hidden{% endif %}">
+  <span id="js-post-unflag-btn-{{post.id}}" class="action-link js-post-unflag-btn is-small button {% if post.offensive_flag_count == 0 %}is-hidden{% endif %}">
     {% trans %}remove flag{% endtrans %}
   </span>
 {%- endmacro -%}
@@ -63,20 +75,29 @@
 
 {%- macro post_vote_buttons(post = None) -%}
 <div class="js-post-vote-btn-group">
-  <div id="js-post-upvote-btn-{{ post.id }}"
-    class="js-post-vote-btn js-post-upvote-btn with-upvote-icon"
-    data-post-id="{{post.id}}"
-    data-post-type="{{post.post_type}}"
-  ></div>
-  <div class="js-post-vote-number"
-    title="{% trans count=post.score %}{{ count }} vote{% pluralize %}{{ count }} votes{% endtrans %}"
-  >{{ post.score|humanize_counter }}</div>
-  <div id="js-post-downvote-btn-{{ post.id }}"
-    class="js-post-vote-btn js-post-downvote-btn with-downvote-icon"
+  <a id="js-post-upvote-btn-{{ post.id }}"
+    class="js-post-vote-btn js-post-upvote-btn with-upvote-icon has-text-dark"
     data-post-id="{{post.id}}"
     data-post-type="{{post.post_type}}"
   >
+  <span class="icon">
+    <i class="fas fa-arrow-up"></i>
+  </span>
+  </a>
+  <div class="js-post-vote-number"
+    title="{% trans count=post.score %}{{ count }} vote{% pluralize %}{{ count }} votes{% endtrans %}"
+  >
+    <b>{{ post.score|humanize_counter }}</b>
   </div>
+  <a id="js-post-downvote-btn-{{ post.id }}"
+    class="js-post-vote-btn js-post-downvote-btn with-downvote-icon has-text-dark"
+    data-post-id="{{post.id}}"
+    data-post-type="{{post.post_type}}"
+  >
+  <span class="icon">
+    <i class="fas fa-arrow-down"></i>
+  </span>
+</a>
   <script type="text/javascript">
       askbot['functions']['renderPostVoteButtons']('{{post.id}}');
   </script>
@@ -118,30 +139,41 @@
 {%- endmacro -%}
 
 {%- macro post_contributor_info(revision, last_revision=None) -%}
-<div class='post-update-info'>
-  <div class='post-update-info-avatar'>
-  {% if revision.is_anonymous %}
-    {{ anon_avatar(32) }}
-  {% else %}
-    {{ gravatar(revision.author, 32) }}
-  {% endif %}
+<div class='post-update-info message is-info'>
+  <div class="message-header">
+    Letzte Änderungen
   </div>
-  <div class='post-update-info-details'>
-    <div class='post-update-info-author-name'>
-      {% if revision.is_anonymous %}
-        {{ settings.NAME_OF_ANONYMOUS_USER }}
-      {% else %}
-        <a class="user-name-link" href="{{ revision.author.get_absolute_url() }}">{{ revision.author.username }}</a>
-        {% if settings.GROUPS_ENABLED %}
-          {{ user_primary_group(revision.author) }}
+  <div class="message-body">
+    <div class='post-update-info-details'>
+      <div class='post-update-info-author-name'>
+        {% if revision.is_anonymous %}
+          {{ settings.NAME_OF_ANONYMOUS_USER }}
+        {% else %}
+          <span class="icon">
+            <i class="fas fa-user" aria-hidden="true"></i>
+          </span>
+          <span>
+            Von 
+            <a class="user-name-link" href="{{ revision.author.get_absolute_url() }}">
+              {{ revision.author.username }}
+            </a>
+          </span>
+          {% if settings.GROUPS_ENABLED %}
+            {{ user_primary_group(revision.author) }}
+          {% endif %}
         {% endif %}
-      {% endif %}
-    </div>
-    <div class='post-update-info-revision-links'>
-      {{ post_revision_link(revision) }}
-      {%- if revision != last_revision and revision.author_id == last_revision.author_id -%},
-        {{ post_revision_link(last_revision) }}
-      {% endif %}
+      </div>
+      <div class='post-update-info-revision-links'>
+          <span class="icon">
+            <i class="fas fa-calendar" aria-hidden="true"></i>
+          </span>
+          <span>
+        {{ post_revision_link(revision) }}
+        {%- if revision != last_revision and revision.author_id == last_revision.author_id -%},
+          {{ post_revision_link(last_revision) }}
+        {% endif %}
+        </span>
+      </div>
     </div>
   </div>
 </div>
@@ -349,9 +381,9 @@ for the purposes of the AJAX comment editor #}
 
 {%- macro comments_widget_buttons(post=None, max_comments=None, user=None) -%}
   {% set more_comments = post.get_comments_count(user) > max_comments %}
-  <a id="js-add-comment-for-post-{{ post.id }}-btn" class="js-add-comment-btn action-link {% if more_comments %}js-hidden{% endif %}"
+  <a id="js-add-comment-for-post-{{ post.id }}-btn" class="js-add-comment-btn action-link button is-primary is-small {% if more_comments %}is-hidden{% endif %}"
   >{% trans %}add a comment{% endtrans %}</a>
-  <a class="js-load-comments-btn action-link {% if not more_comments %}js-hidden{% endif %}">{% trans %}see more comments{% endtrans %}</a>
+  <a class="js-load-comments-btn action-link button is-small {% if not more_comments %}is-hidden{% endif %}">{% trans %}see more comments{% endtrans %}</a>
   <script type="text/javascript">
     if (!askbot.data.userCanPostComments) {
       var btn = document.getElementById('js-add-comment-for-post-' + {{ post.id }} + '-btn');
@@ -367,62 +399,96 @@ for the purposes of the AJAX comment editor #}
 {%- endmacro -%}
 
 {%- macro comment_widget(comment, csrf_token=None) -%}
-  <div id="js-post-{{comment.id}}" class="js-comment" data-post-id="{{ comment.id }}">
-    <div class="comment-votes">
+  <div id="js-post-{{comment.id}}" class="js-comment mb-4" data-post-id="{{ comment.id }}">
+    <div class="level-left">
+    <div class="comment-votes level-item">
       <div id="js-post-upvote-btn-{{comment.id}}"
         class="js-post-upvote-btn js-score with-comment-upvote-icon"
         title="{% trans %}upvote comment{% endtrans %}"
-      >{% if comment.score > 0 %}{{ comment.score }}{% endif %}</div>
+      >
+      <span class="icon">
+        <i class="fas fa-chevron-up"></i>
+      </span>
+      <span>
+        {{ comment.score }}
+      </span>
+      </div>
       {% if comment.id %}
       <script type="text/javascript">
         askbot['functions']['renderPostVoteButtons']('{{ comment.id }}');
       </script>
       {% endif %}
     </div>
-    <div class="js-comment-content">
+    <div class="js-comment-content level-item">
       {% if comment.needs_moderation() %}
         {{ moderated_post_warning(comment) }}
       {% endif %}
       <div class="js-comment-body">
         {{ comment.summary }}
       </div>
+    </div>
+    </div>
       <div class="js-comment-controls">
         {# important - the same number for avatar size must be in question/javascript.html #}
         {% if hasattr(comment.author, 'is_terminated') and comment.author.is_terminated() %}
-          {{ anon_avatar(16) }}
-          <span class="js-comment-author">{{ comment.author.get_anonymous_name() }}</span>
+          <span class="js-comment-author is-size-7">{{ comment.author.get_anonymous_name() }}</span>
         {% else %}
-          {{ gravatar(comment.author, 16, hide_rep=True) }}
-          <a class="js-comment-author" href="{{ comment.author.get_profile_url() }}"
-          >{{comment.author.username|escape}}</a>
+          <a class="js-comment-author is-size-7 icon-text" href="{{ comment.author.get_profile_url() }}"
+          >
+          <span class="icon"> <i class="fas fa-user" aria-hidden="true"></i> </span>
+          <span>
+            {{comment.author.username|escape}}
+          </span>
+        </a>
         {% endif %}
-        <span class="comment-age">({{ timeago(comment.added_at) }})</span>
-        <span class="action-link js-comment-edit-btn js-edit">{% trans %}edit{% endtrans %}</span>
-        <div class="js-dropdown-menu js-toolbar-dropdown-menu action-link">
-          <div class="js-dropdown-trigger with-caret-down-icon">{% trans %}more{% endtrans %}</div>
-          <ul class="js-dropdown-target">
-            <li>
-              <span class="action-link js-comment-delete-btn"
-                title="{% trans %}delete this comment{% endtrans %}">delete</span>
-            </li>
-            <li>
-              <form class="repost-comment-as-answer" action="{{ url('comment_to_answer') }}" method="POST" accept-charset="utf-8">
-                {{ csrf_input }}
-                <input type="hidden" value="{{ comment.id }}" name="comment_id">
-                <input class="action-link js-comment-convert-btn with-convert-post-icon" type="submit" value="{% trans %}convert to answer{% endtrans %}">
-              </form>
-            </li>
-          </ul>
+        <span class="comment-age is-size-7">({{ timeago(comment.added_at) }})</span>
+        <button class="action-link js-comment-edit-btn js-edit button is-small">
+          <span class="icon"> <i class="fas fa-pen-to-square"></i> </span>
+          <span>
+          Bearbeiten
+        </span>
+      </button>
+        <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-comment-{{ comment.id }}">
+              <span>Mehr</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-comment-{{ comment.id }}" role="menu">
+            <div class="dropdown-content">
+                <a class="action-link js-comment-delete-btn icon-text dropdown-item"
+                  title="{% trans %}delete this comment{% endtrans %}">
+                  <span class="icon"> <i class="fas fa-trash-can"></i> </span>
+                  <span>
+                      Löschen
+                      </span>
+                </a>
+                <form class="repost-comment-as-answer" action="{{ url('comment_to_answer') }}" method="POST" accept-charset="utf-8">
+                  <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                  <input type="hidden" value="{{ comment.id }}" name="comment_id">
+                  <!--<input class="action-link js-comment-convert-btn with-convert-post-icon" type="submit" value="{% trans %}convert to answer{% endtrans %}">-->
+                  <a class="submit-link dropdown-item">
+                    <span class="icon"> <i class="fas fa-circle-exclamation"></i> </span>
+                    <span>
+                    {% trans %}convert to answer{% endtrans %}
+                  </span>
+                  </a>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  {% if comment.id %}
+        {% if comment.id %}
   <script type="text/javascript">
       askbot.functions.hideConvertLinks();
       askbot.functions.renderPostControls('{{ comment.id }}', false);
   </script>
   {% endif %}
+      </div>
+  
 {%- endmacro -%}
 
 {%- macro post_comments(
@@ -440,23 +506,24 @@ for the purposes of the AJAX comment editor #}
     {% set comments = post.get_cached_comments()[:max_comments] %}
   {% endif %}
   {% set comments_count = comments|length %}
-  <div class="js-post-comments {% if comments_count == 0 %}js-empty{% endif %}"
+  <div class="js-post-comments {% if comments_count == 0 %}js-empty{% endif %} message"
     data-parent-post-id="{{ post.pk }}"
     data-parent-post-type="{{ post.post_type }}">
-    <h2 class="js-comments-list-title {% if comments_count == 0 %}js-hidden{% endif %}"
+    <h2 class="js-comments-list-title {% if comments_count == 0 %}is-hidden{% endif %} message-header"
     >{% trans %}Comments{% endtrans %}</h2>
-    <div class="js-comments-list">
+    <div class="js-comments-list message-body">
       {% for comment in comments %}
         {{ comment_widget(comment, csrf_token) }}
       {% endfor %}
+    
+      <div class="comments-list-controls mb-3">
+        {% if show_post == post and show_comment and show_comment_position > max_comments %}
+          {{ comments_widget_buttons(post=post, max_comments=show_comment_position, user=user) }}
+        {% else %}
+          {{ comments_widget_buttons(post=post, max_comments=max_comments, user=user) }}
+        {% endif %}
     </div>
-    <div class="comments-list-controls">
-      {% if show_post == post and show_comment and show_comment_position > max_comments %}
-        {{ comments_widget_buttons(post=post, max_comments=show_comment_position, user=user) }}
-      {% else %}
-        {{ comments_widget_buttons(post=post, max_comments=max_comments, user=user) }}
-      {% endif %}
-    </div>
+  </div>
   </div>
 {%- endmacro -%}
 

@@ -21,10 +21,11 @@ CommentConvertLink.prototype.createDom = function () {
     csrf_token.attr('value', getCookie(askbot.settings.csrfCookieName));
     element.append(csrf_token);
 
-    var submit = this.makeElement('input');
-    submit.addClass('action-link js-comment-convert-btn with-convert-post-icon');
-    submit.attr('type', 'submit');
-    submit.attr('value', gettext('convert to answer'));
+    var submit = this.makeElement('a');
+    submit.addClass('submit-link dropdown-item');
+    //submit.attr('type', 'submit');
+    submit.html('<span class="icon"> <i class="fas fa-circle-exclamation"></i> </span><span>' + 
+        gettext('convert to answer') + '</span>');
     element.append(submit);
     this.decorate(element);
     this.getElement().trigger('askbot.afterCommentConvertLinkDecorate', [this]);
@@ -33,4 +34,7 @@ CommentConvertLink.prototype.createDom = function () {
 
 CommentConvertLink.prototype.decorate = function (element) {
     this._element = element;
+    this._element.children(".submit-link").click((e) => {
+        this._element.submit();
+    });
 };

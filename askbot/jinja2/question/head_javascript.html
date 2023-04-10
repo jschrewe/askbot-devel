@@ -130,8 +130,13 @@
       var repostAsQuestionComment = document.getElementById(id1);
       var id2 = 'post-' + post_id + '-repost-as-comment-under-previous-answer';
       var repostAsPrevAnsComment = document.getElementById(id2);
-      var extraOptsList = repostAsQuestionComment.parentNode;
-      var extraOpts = extraOptsList.parentNode;
+
+      repostAsQuestionComment.querySelector('.submit-link').addEventListener("click", e => {
+        repostAsQuestionComment.submit();
+      });
+      repostAsPrevAnsComment.querySelector('.submit-link').addEventListener("click", e => {
+        repostAsPrevAnsComment.submit();
+      });
 
       var data = askbot['data'];
       var isAuthenticated = data['userIsAuthenticated'];
@@ -145,20 +150,16 @@
         var answerBodyNodes = answerBody.childNodes;
         var answerElement = answerBodyNodes[answerBodyNodes.length - 1];
         if (trim(getTextContent(answerElement)).length > askbot['data']['maxCommentLength']) {
-          repostAsQuestionComment.parentNode.removeChild(repostAsQuestionComment);
-          repostAsPrevAnsComment.parentNode.removeChild(repostAsPrevAnsComment);
+          repostAsQuestionComment.remove();
+          repostAsPrevAnsComment.remove();
         } else if (parseInt(post_id) === data['oldestAnswerId']) {
-          repostAsPrevAnsComment.parentNode.removeChild(repostAsPrevAnsComment);
+          repostAsPrevAnsComment.remove();
         }
       } else {
-        repostAsQuestionComment.parentNode.removeChild(repostAsQuestionComment);
-        repostAsPrevAnsComment.parentNode.removeChild(repostAsPrevAnsComment);
+        repostAsQuestionComment.remove();
+        repostAsPrevAnsComment.remove();
       }
-
-      //if the whole control is empty - remove it
-      if (extraOptsList.getElementsByTagName('li').length === 0) {
-        extraOpts.parentNode.removeChild(extraOpts);
-      }
+      
     }
 
     function hidePublishPostLinks() {

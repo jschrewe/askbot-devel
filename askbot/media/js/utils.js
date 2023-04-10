@@ -322,9 +322,8 @@ var inArray = function (item, itemsList) {
 };
 
 var showMessage = function (element, msg, where) {
-  var div = $('<div class="js-error-popup">' + msg + 
-              '<p class="js-error-popup-hint">(' + gettext('click to close') + ')</p>' +
-              '</div>');
+  var div = $('<div class="js-error-popup notification"><button class="delete js-error-popup-hint"></button>' 
+            + msg + '</div>');
   where = where || 'parent';
 
   div.click(function (event) {

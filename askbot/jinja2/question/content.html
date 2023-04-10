@@ -43,6 +43,6 @@
   {% include "question/new_answer_form_title.html" %}
   <div class="info-box">
     <div class="mb-2">{{ settings.WORDS_ONLY_ONE_ANSWER_PER_USER_IS_ALLOWED|escape }}</div>
-    <a class="btn" href="{{ url('edit_answer',  previous_answer.id ) }}">{{ settings.WORDS_EDIT_YOUR_PREVIOUS_ANSWER|escape }}</a>
+    <a class="button is-info" href="{{ url('edit_answer',  previous_answer.id ) }}">{{ settings.WORDS_EDIT_YOUR_PREVIOUS_ANSWER|escape }}</a>
   </div>
 {% endif %}

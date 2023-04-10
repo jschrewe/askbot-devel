@@ -6,6 +6,7 @@ var EditLink = function (className) {
 inherits(EditLink, SimpleControl);
 
 EditLink.prototype.createDom = function () {
+    console.log("this.createDom called");
     var element = $('<a></a>');
     if (this.className) {
       element.addClass(this.className);
@@ -15,7 +16,7 @@ EditLink.prototype.createDom = function () {
 
 EditLink.prototype.decorate = function (element) {
     this._element = element;
-    this._element.attr('title', gettext('click to edit'));
-    this._element.html(gettext('edit'));
+    //this._element.attr('title', gettext('click to edit'));
+    //this._element.html(gettext('edit'));
     this.setHandlerInternal();
 };
