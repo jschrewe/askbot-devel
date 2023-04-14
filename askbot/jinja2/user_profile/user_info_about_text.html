@@ -9,7 +9,9 @@
   {% if editable %}
     <div class="js-user-info-about-prompt" style="color: var(--clr-neutral-50); padding-top: 0.25rem">
       {% if not user_about|trim|length %}
-        {% trans %}Write something about yourself...{% endtrans %}
+        <h4 class="subtitle is-4">{% trans %}Write something about yourself...{% endtrans %}</h4>
+      {% else %}
+      <h4 class="subtitle is-4 mb-3">Über mich</h4>
       {% endif %}
     </div>
     <div class="js-editable"
@@ -23,10 +25,10 @@
       data-editor-type="{{ settings.EDITOR_TYPE }}"
       data-previewer-enabled="false"
     >
-      <div class="js-editable-content">{{ user_about|convert_text }}</div>
-      <div class="js-editable-controls"></div>
-      <div class="js-editable-hide-user-about-{{ view_user.pk}}">
-        <span id="js-edit-btn-user-about-{{ view_user.pk }}" class="with-edit-icon" style="cursor: pointer">{% trans %}edit{% endtrans %}</span>
+      <div class="js-editable-content content">{{ user_about|convert_text }}</div>
+      <div class="js-editable-controls field is-grouped mb-5"></div>
+      <div class="js-editable-hide-user-about-{{ view_user.pk}} mb-5">
+        <button id="js-edit-btn-user-about-{{ view_user.pk }}" class="with-edit-icon button is-light">{% trans %}edit{% endtrans %}</button>
       </div>
     </div>
   {% else %}

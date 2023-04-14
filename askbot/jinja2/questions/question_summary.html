@@ -32,7 +32,7 @@
       </span>
       <span>{{ thread.view_count|humanize_counter(humanize_zero=True) }}</span>
     </p>
-    <p class="card-footer-item">
+    <p class="card-footer-item {%- if thread.accepted_answer_id %} has-text-success{% endif %}">
       <span class="icon">
         <i class="fas fa-message"></i>
       </span>

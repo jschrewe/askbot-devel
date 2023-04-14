@@ -1,6 +1,7 @@
 {% if user_tags %}
-<section id="tags" class="user-profile-tags">
-  <h2>{% trans counter=user_tags|length %}<span class="count">{{counter}}</span> Tag{% pluralize %}<span class="count">{{counter}}</span> Tags{% endtrans %}</h2>
+<section id="tags" class="user-profile-tags columns mt-5">
+  <div class="column">
+  <h2 class="subtitle is-4">{% trans counter=user_tags|length %}<span class="count">{{counter}}</span> Tag{% pluralize %}<span class="count">{{counter}}</span> Tags{% endtrans %}</h2>
   <ul class="tags">
     {% for tag in user_tags %}
       <li>
@@ -13,14 +14,21 @@
       </li>
     {% endfor %}
   </ul>
+</div>
   {% if interesting_tag_names %}
+  <div class="column">
     {{ user_profile_macros.tag_selection(interesting_tag_names, 'interesting') }}
+  </div>
   {% endif %}
   {% if ignored_tag_names %}
+  <div class="column">
     {{ user_profile_macros.tag_selection(ignored_tag_names, 'ignored') }}
+  </div>
   {% endif %}
   {% if subscribed_tag_names %}
+  <div class="column">
     {{ user_profile_macros.tag_selection(subscribed_tag_names, 'subscribed') }}
+  </div>
   {% endif %}
 </section>
 {% endif %}

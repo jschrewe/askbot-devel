@@ -1,7 +1,7 @@
 {% import "macros.html" as macros %}
 <section id="questions" class="user-profile-questions">
   {% if questions %}
-    <h2>
+    <h2 class="subtitle is-4">
       {% set pluralized_item_term=settings.WORDS_QUESTIONS_COUNTABLE_FORMS|py_pluralize(question_count)|capitalize|escape %}
       {% set item_count=question_count %}
       {% trans %}<span class="count">{{ item_count }}</span> {{ pluralized_item_term }}{% endtrans %}
@@ -13,12 +13,14 @@
     }
   </style>
   <div class="js-user-questions">
-    <div id="js-questions"> {# sub-container to match the response of the ajax query #}
+    <div id="js-questions" class="columns is-multiline"> {# sub-container to match the response of the ajax query #}
       {% for question in questions %}
+        <div class="column is-half">
         {{ question.thread.get_summary_html(
           search_state=search_state,
           visitor=request.user
         )}}
+        </div>
       {% else %}
         <div class="empty-content-box">
           {% trans %}There are no questions.{% endtrans %}

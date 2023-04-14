@@ -3,7 +3,7 @@
 {% macro tag_selection(tag_names, selection_type) %}
     <a name="{{selection_type}}-tags"></a>
     {% filter trim %}
-    <h2>{% 
+    <h2 class="subtitle is-4">{% 
             trans counter=tag_names|length, type=gettext(selection_type)|capitalize
         %}<span class="count">{{counter}}</span> {{type}} Tag{% 
             pluralize 

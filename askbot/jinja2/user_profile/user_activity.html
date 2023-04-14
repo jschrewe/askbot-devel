@@ -5,8 +5,10 @@
   {% trans %}activity{% endtrans %}
 {% endblock %}
 {% block usercontent %}
-  <table>
+<div class="table-container">
+  <table class="table is-fullwidth is-striped">
     {% for act in activities %}
+    {% if not act.is_badge %}
       <tr class="user-action-{{ act.type_id }}">
         <td class="timestamp">{{ timeago(act.time) }}</td>
         <td class="action-type">{{ act.type }}</td>
@@ -39,6 +41,7 @@
           {% endif %}
         </td>
       </tr>
+      {% endif %}
     {% else %}
       <tr>
         <td>
@@ -49,4 +52,5 @@
       </tr>
     {% endfor %}
   </table>
+</div>
 {% endblock %}
