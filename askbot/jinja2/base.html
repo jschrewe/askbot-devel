@@ -26,6 +26,67 @@
     </head>
     <body class="{% block layout_class %}{% endblock %}{% if user_messages %} user-messages{% endif %}{% if page_class %} {{page_class}}{% endif %}{% if request.user.is_anonymous %} anon{% endif %}">
         <section class="section">
+            <div class="hero is-small">
+                <div class="hero-body pl-0 pb-0 pt-0 level">
+                  <div class="level-left">
+                    <div class="level-item">
+                      <figure class="image is-128x128 mr-5" style="height: 100%">
+                        <img src="/static/img/logo_berlin.png" height="150" class="mb-auto mt-auto" />
+                      </figure>
+                      </div>
+                      <div class="level-item mb-auto mt-auto">
+                        <p class="title">Arbeitszeitstudie Berlin – Hilfe</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                          <span aria-hidden="true"></span>
+                          <span aria-hidden="true"></span>
+                          <span aria-hidden="true"></span>
+                        </a>
+                      </div>
+                    
+                      {% if user.is_authenticated %}
+                      <div id="navbarBasicExample" class="navbar-menu">
+                        <div class="navbar-start">
+                          <a class="navbar-item" href="/home/">
+                            <span class="icon">
+                              <i class="fas fa-house"></i>
+                            </span>
+                          </a>
+                    
+                          <a class="navbar-item" href="https://berlin.arbeitszeitstuidie.de/">
+                            Zeiterfassung
+                          </a>
+                    
+                          <a class="navbar-item" href="/faq/v/">
+                            Häufig gestellte Fragen
+                          </a>
+                    
+                          <a class="navbar-item" href="/forum/">
+                            Forum
+                          </a>
+                        </div>
+                        {% endif %}
+                    
+                        <div class="navbar-end">
+                          <div class="navbar-item">
+                            <div class="buttons">
+                              <a class="button is-light" href="/accounts/logout/">
+                                Abmelden
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </nav>
+              </div>
+              <hr />
+            </div>
         {% include "components/system_messages.html" %}
         {% include "debug_header.html" %}
         {% include "custom_header.html" ignore missing %}
