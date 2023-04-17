@@ -2,57 +2,53 @@
 {% block title %}{% trans %}Help{% endtrans %}{% endblock %}
 {% block layout_class %}{{ super() }} meta-page help-page{% endblock %}
 {% block content %}
+<div class="content">
   <h1>{% trans %}Help{% endtrans %}</h1>
   <p>
-    {% if request.user.is_authenticated %}
-      {% trans username = request.user.username|escape %}Welcome {{username}},{% endtrans %}
-    {% else %}
-      {% trans %}Welcome,{% endtrans %}
-    {% endif %}
+    Vielen Dank, dass Sie hilfe.arbeitszeitstudie.de nutzen. Hier erfahren Sie, wie es funktioniert.
+  </p>
+  <h2>
+    Wie Fragen, Antworten und Kommentare funktionieren
+  </h2>
+  <p>
+    Diese Seite ist für das Stellen und Beantworten von Fragen gedacht, nicht für ergebnisoffene Diskussionen. Wir ermutigen jeden, den Bereich "Frage" für Fragen und "Antwort" für Antworten zu nutzen.
   </p>
   <p>
-    {% trans %}Thank you for using {{app_name}}, here is how it works.{% endtrans %}
+    Trotzdem kann jede Frage und Antwort kommentiert werden – die Kommentare sind gut für begrenzte Diskussionen.
   </p>
-  <a name="content"></a>
-  <h2>{% trans %}How questions, answers and comments work{% endtrans %}</h2>
+  <h2>
+    Bitte nutzen Sie die Suche bevor Sie eine Frage stellen.
+  </h2>
   <p>
-    {% trans %}This site is for asking and answering questions, not for open-ended discussions.{% endtrans %}
-    {% trans %}We encourage everyone to use “question” space for asking and “answer” for answering.{% endtrans %}
+    Geben Sie Ihre Frage oder ein Stichwort in die Suchleiste ein um nachzusehen, ob eine ähnliche Frage schon einmal gestellt wurde.
   </p>
   <p>
-    {% trans %}Despite that, each question and answer can be commented – 
-    the comments are good for the limited discussions.{% endtrans %}
+    Die Suche hat erweiterte Funktionen:
   </p>
-  <a name="search"></a>
-  <h2>{% trans %}Please search before asking your questions{% endtrans %}</h2>
-  <p>{% trans %}Type your question in the search bar and see whether a similar question has been asked before{% endtrans %}.
-  </p>
-  <p>{% trans %}Search has advanced capabilities:{% endtrans %}</p>
   <ul>
-    <li>{% trans %}to search in title - enter [title: your text]{% endtrans %}</li>
-    <li>{% trans %}to search by tags - enter [tag: sometag] or #sometag{% endtrans %}</li>
-    <li>{% trans %}to search by user - enter [user: somename] or @somename or @"some name"{% endtrans %}</li>
+    <li>Suche im Titel - geben Sie [Titel: Ihr Text] ein</li>
+    <li>um nach Tags zu suchen - geben Sie [tag: sometag] oder #sometag ein</li>
+    <li>Suche nach Benutzer - geben Sie [user: somename] oder @somename oder @"some name" ein</li>
   </ul>
-  <p>{% trans %}In addition, it is possible to click on tags to add them to the search query.{% endtrans %}
-  {% if settings.TAG_SEARCH_INPUT_ENABLED %}
-    {% trans %}Finally, a separate tag search box is available in the side bar of the main page, where the search tags can be entered as well{% endtrans %}
-  {% endif %}
-  </p>
-  <p>{% trans %}<em>Important!!!</em> All search terms are combined with a logical "AND" expression - to narrow the search by adding new terms.{% endtrans %}</p>
-  <a name="voting"></a>
-  <h2>{% trans %}Voting{% endtrans %}</h2>
   <p>
-    {% trans %}Voting in {{app_name}} helps to select best answers and thank most helpful users.{% endtrans %}
+    Außerdem ist es möglich, auf Tags zu klicken, um sie der Suchanfrage hinzuzufügen. Schließlich steht in der Seitenleiste der Hauptseite ein separates Feld für die Tag-Suche zur Verfügung, in das die Such-Tags ebenfalls eingegeben werden können
+  </p>  
+  <p>
+    <strong>Wichtig!</strong> Alle Suchbegriffe werden mit einem logischen "UND"-Ausdruck kombiniert – um die Suche durch Hinzufügen neuer Begriffe einzugrenzen.
+  </p>
+
+  <h2>Abstimmen</h2>
+  <p>
+    Das Voting hilft, die besten Antworten auszuwählen und den hilfreichsten Benutzer*innen zu danken.
+  </p>
+
+  <h2>Andere Themen</h2>
+  <p>
+    Sie können Benutzer*innen an beliebiger Stelle im Text mit @mention auf sich aufmerksam machen, Benutzer*innen und Unterhaltungen folgen und unangemessene Inhalte durch Markierung melden.
   </p>
   <p>
-    {% trans %}Please vote when you find helpful information,
-    it really helps the {{app_name}} community.{% endtrans %}
+    Viel Spaß!
   </p>
-  <a name="other"></a>
-  <h2>{% trans %}Other topics{% endtrans %}</h2>
-  <p>
-    {% trans %}You can @mention users anywhere in the text to point their attention,
-    follow users and conversations and report inappropriate content by flagging it.{% endtrans %}
-  </p>
-  <p>{% trans %}Enjoy.{% endtrans %}</p>
+
+</div>
 {% endblock %}
