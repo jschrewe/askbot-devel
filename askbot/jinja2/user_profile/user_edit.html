@@ -4,64 +4,70 @@
 {% block title %}{% filter trim %}{% trans %}Edit user profile{% endtrans %}{% endfilter %}{% endblock %}
 {% block layout_class %}{{ super() }} edit-user-profile-page{% endblock %}
 {% block content %}
-<h1>{{ view_user.username|escape }} - {% trans %}edit profile{% endtrans %}</h1>
-<div class='avatar'>
-    {{ macros.gravatar(view_user, 128, hide_rep=True) }}
-    {% if request.user.pk == view_user.pk %}
-        <p><a
-            {% if support_custom_avatars %}
-                href="{{ url('askbot_avatar_show_list',  view_user.pk ) }}"
+<h1 class="title is-2">{{ view_user.username|escape }} - {% trans %}edit profile{% endtrans %}</h1>
+
+<div class="columns">
+    <div class="column is-two-thirds">
+<form name="" action="{{ url('edit_user',  view_user.id ) }}" method="post">
+    {{ csrf_input }}
+    <div class="field is-horizontal">
+        <div class="field-label">
+            {% if settings.EDITABLE_SCREEN_NAME %}
+            <label for="{{ form.username.id_for_label }}" class="label">
+                {{ form.username.label }}
+            </label>
             {% else %}
-                href="{{ url('faq') }}#gravatar"
+            <label class="label">
+                Benutzername
+            </label>
             {% endif %}
-        >{% trans %}change picture{% endtrans %}</a></p>
-    {% endif %}
-</div>
-<form name="" action="{{ url('edit_user',  view_user.id ) }}" method="post">{{ csrf_input }}
-    <table class="user-details">
-        <tr>
-            <td>{{ form.username.label_tag() }}</td>
-            <td>
-                {% if settings.EDITABLE_SCREEN_NAME %}
-                    {{ form.username }}
-                    <span class="form-error"> {{ form.username.errors }} </span>
-                {% else %}
-                    {{ view_user.username|escape }}
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <td>{{ form.email.label_tag() }}</td>
-            <td>
-                {% if settings.EDITABLE_EMAIL %}
-                    {{ form.email }}
-                    <span class="form-error">{{ form.email.errors }}</span>
-                {% else %}
-                    {{ view_user.email }}
-                    {% trans %}(cannot be changed){% endtrans %}
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <td>{{ form.realname.label_tag() }}</td>
-            <td>{{ form.realname }} <span class="form-error"> {{ form.realname.errors }} </span></td>
-        </tr>
-        <tr>
-            <td>{{ form.website.label_tag() }}</td>
-            <td>{{ form.website }} <span class="form-error"> {{ form.website.errors }} </span></td>
-        </tr>
-        <tr>
-            <td>{{ form.city.label_tag() }}</td>
-            <td>{{ form.city }} <span class="form-error"> {{ form.city.errors }} </span></td>
-        </tr>
-        <tr>
-            <td>{{ form.country.label_tag() }}</td>
-            <td>{{ form.country }} <span class="form-error"> {{ form.country.errors }} </span></td>
-        </tr>
-        <tr>
-            <td>{{ form.show_country.label_tag() }}</td>
-            <td>{{ form.show_country }} <span class="form-error"> {{ form.show_country.errors }} </span></td>
-        </tr>
+        </div>
+        <div class="field-body">
+            {% if settings.EDITABLE_SCREEN_NAME %}
+                {{ form.username }}
+                <span class="form-error is-danger"> {{ form.username.errors }} </span>
+            {% else %}
+                {{ view_user.username|escape }}
+            {% endif %}
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <label class="label">
+                {{ form.email.label }}
+            </label>
+        </div>
+        <div class="field-body">
+            {{ view_user.email }}
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <label for="{{ form.realname.id_for_label }}" class="label">
+                Voller Name
+            </label>
+        </div>
+        <div class="field-body">
+            <input type="text" name="{{ form.realname.html_name }}" class="input" size="35" maxlength="255" id="{{ form.realname.id_for_label }}">
+            <span class="form-error is-danger">
+                {{ form.realname.errors }} 
+            </span>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label">
+            <label for="{{ form.website.id_for_label }}" class="label">
+                Webseite
+            </label>
+        </div>
+        <div class="field-body">
+            <input type="text" name="{{ form.website.html_name }}" class="input" size="35" maxlength="255" id="{{ form.website.id_for_label }}">
+            <span class="form-error is-danger">
+                {{ form.website.errors }} 
+            </span>
+        </div>
+    </div>
+        
         {% if marked_tags_setting == 'when-user-wants' %}
         <tr>
             <td>{{ form.show_marked_tags.label_tag() }}</td>
@@ -70,10 +76,23 @@
             </td>
         </tr>
         {% endif %}
-    </table>
-    <input class="btn" type="submit" value="{% trans %}Update{% endtrans %}"/>
-    <input class="btn btn-muted" id="cancel" type="button" value="{% trans %}Cancel{% endtrans %}"/>
+        <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                    <input class="btn button is-primary" type="submit" value="{% trans %}Update{% endtrans %}"/>
+                    <input class="btn btn-muted button is-light" id="cancel" type="button" value="{% trans %}Cancel{% endtrans %}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+    
 </form>
+</div>
+</div>
 {% endblock %}
 {% block endjs %}
     <script type="text/javascript">

@@ -1,4 +1,10 @@
 <div class="js-meta-nav navbar-end">
+  <a class="profile-link navbar-item" href="{{ request.user.get_absolute_url() }}">
+    <span class="icon">
+      <i class="fas fa-user" aria-hidden="true"></i>
+    </span>
+    <span>Forumprofil</span>
+  </a>
   <a href="{{ url('tags') }}"
     class="navbar-item{% if active_tab == 'tags' %} has-text-info-dark{% endif %}"
   >
@@ -7,16 +13,6 @@
   </span>
   <span>
     {% trans %}tags{% endtrans %}
-  </span>
-  </a>
-  <a href="{{ url('users') }}"
-    class="navbar-item{% if active_tab == 'users' %} has-text-info-dark{% endif %}"
-  >
-  <span class="icon">
-    <i class="fas fa-users" aria-hidden="true"></i>
-  </span>
-  <span>
-    {% trans %}users{% endtrans %}
   </span>
   </a>
   {% if settings.BADGES_MODE == 'public' %}

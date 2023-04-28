@@ -1,11 +1,5 @@
 <nav class="user-nav navbar-start">
   {%- if request.user.is_authenticated -%}
-    <a class="profile-link navbar-item" href="{{ request.user.get_absolute_url() }}">
-      <span class="icon">
-        <i class="fas fa-user" aria-hidden="true"></i>
-      </span>
-      <span>Profil bearbeiten</span>
-    </a>
     {% include "components/user_nav/inbox_link.html" %}
     {% include "components/user_nav/moderation_queue_link.html" %}
   {% elif settings.USE_ASKBOT_LOGIN_SYSTEM %}
