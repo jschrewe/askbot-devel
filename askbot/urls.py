@@ -69,20 +69,21 @@ urlpatterns = [
         views.readers.search_posts,
         name='search_posts'
     ),
-    url(
-        r'^%s$' % pgettext('urls', 'users/'),
-        views.users.users_list,
-        name='users'
-    ),
-    url(
-        r'^%s%s(?P<group_id>\d+)/(?P<group_slug>.*)/$' % (
-                                            pgettext('urls', 'users/'),
-                                            pgettext('urls', 'by-group/')
-                                        ),
-        views.users.users_list,
-        kwargs={'by_group': True},
-        name='users_by_group'
-    ),
+    # TODO: Diese URLS müssen weg!
+    # url(
+    #     r'^%s$' % pgettext('urls', 'users/'),
+    #     views.users.users_list,
+    #     name='users'
+    # ),
+    # url(
+    #     r'^%s%s(?P<group_id>\d+)/(?P<group_slug>.*)/$' % (
+    #                                         pgettext('urls', 'users/'),
+    #                                         pgettext('urls', 'by-group/')
+    #                                     ),
+    #     views.users.users_list,
+    #     kwargs={'by_group': True},
+    #     name='users_by_group'
+    # ),
     # TODO: rename as user_edit, b/c that's how template is named
     url(
         r'^%s(?P<id>\d+)/%s$' % (pgettext('urls', 'users/'), pgettext('urls', 'edit/')),
