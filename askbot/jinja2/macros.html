@@ -849,55 +849,54 @@ for the purposes of the AJAX comment editor #}
 {%- macro paginator_questions(p, search_state) -%} {# p is paginator context dictionary #}
   {% filter trim %}
     {% if p.is_paginated %}
-      <div class='paginator'>
-        <a class='with-caret-left-icon prev-page{% if p and not p.has_previous %} js-disabled{% endif %}'
-          href='{{ search_state.change_page(p.previous).full_url() }}'
+      <div class='pagination is-centered mt-5'>
+        <a class='pagination-previous{% if p and not p.has_previous %} is-disabled{% endif %}'
+        {% if p and p.has_previous %}href='{{ search_state.change_page(p.previous).full_url() }}'{% endif %}
           aria-label='{% trans %}previous{% endtrans %}'
-        ></a>
-        {% if not p.in_leading_range %}
-        <span class="js-first-page-block">
+        >Vorherige</a>
+        <a class='pagination-next{% if p and not p.has_next %} is-disabled{% endif %}'
+        {% if p and p.has_next %}href="{{ search_state.change_page(p.next).full_url() }}"{% endif %}
+          aria-label="{% trans %}next page{% endtrans %}"
+        >Nächste</a>
+
+        <ul class="pagination-list">
+          {% if not p.in_leading_range %}
           {% for num in p.pages_outside_trailing_range %}
-            <a class='page'
+            <li><a class='pagination-link'
               href='{{ search_state.change_page(num).full_url() }}'
               aria-label='{% trans num=p.pages %}page {{ num }}{% endtrans %}'
             >
               {{ num }}
-            </a>
+            </a></li>
           {% endfor %}
-          <span class='with-ellipsis-h-icon'></span>
-        </span>
+          <li><span class='pagination-ellipsis'>&hellip;</span></li>
         {% endif %}
-
         {% for num in p.page_numbers %}
           {% if num == p.page and p.pages != 1%}
-            <a class='current-page page'>{{ num }}</a>
+            <li><a class='is-current pagination-link'>{{ num }}</a></li>
           {% else %}
-            <a class='page'
+            <li><a class='pagination-link'
               href="{{ search_state.change_page(num).full_url() }}"
               aria-label='{% trans num=p.pages %}page {{ num }}{% endtrans %}'
             >
               {{ num }}
-            </a>
+            </a></li>
           {% endif %}
         {% endfor %}
-
         {% if not p.in_trailing_range %}
-        <span class="js-last-page-block">
-          <span class='with-ellipsis-h-icon'></span>
+          <li><span class='pagination-ellipsis'>&hellip;</span></li>
           {% for num in p.pages_outside_leading_range|reverse %}
-            <a class='page'
+            <li><a class='pagination-link'
               href='{{ search_state.change_page(num).full_url() }}'
               aria-label='{% trans num=p.pages %}page {{ num }}{% endtrans %}'
             >
               {{ num }}
-            </a>
+            </a></li>
           {% endfor %}
-        </span>
         {% endif %}
-        <a class='with-caret-right-icon next-page{% if p and not p.has_next %} js-disabled{% endif %}'
-          href="{{ search_state.change_page(p.next).full_url() }}"
-          aria-label="{% trans %}next page{% endtrans %}"
-        ></a>
+        </ul>
+
+        
       </div>
     {% endif %}
   {% endfilter %}
