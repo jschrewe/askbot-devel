@@ -99,11 +99,13 @@
   };
 
   PostCommentsWidget.prototype.hideOpenEditorButton = function () {
+    this._openEditorButton.addClass('is-hidden');
     this._openEditorButton.addClass('js-hidden');
   };
 
   PostCommentsWidget.prototype.showOpenEditorButton = function () {
     this._openEditorButton.removeClass('js-hidden');
+    this._openEditorButton.removeClass('is-hidden');
   };
 
   PostCommentsWidget.prototype.startNewComment = function () {

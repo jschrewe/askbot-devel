@@ -513,7 +513,7 @@ for the purposes of the AJAX comment editor #}
     >{% trans %}Comments{% endtrans %}</h2>
     <div class="js-comments-list message-body">
       {% for comment in comments %}
-        {{ comment_widget(comment, csrf_token) }}
+        {{ comment_widget(comment, csrf_token) }} 
       {% endfor %}
     
       <div class="comments-list-controls mb-3">
