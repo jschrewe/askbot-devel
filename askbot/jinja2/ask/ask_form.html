@@ -10,7 +10,7 @@
     <div id="askFormBar" class="search-bar control">
       <input id="id_title" class="input questionTitleInput" name="title" autocomplete="off"
         value="{% if form.initial.title %}{{form.initial.title|escape}}{% endif %}"/>
-      <div class="js-title-error js-error help is-danger">
+      <div class="js-title-error js-error notification {% if not form.title.errors %}is-hidden{% endif %} mt-3 is-danger">
         {% if form.title.errors %}
           {{ form.title.errors }}
         {% endif %}
@@ -27,7 +27,7 @@
     <div class="js-folded-editor field">
       <label for="{{ text_field_id }}"
         class="js-text-label label">{{ form.text.label }}</label>
-      <div class="js-text-error js-error help is-danger">
+      <div class="js-text-error {% if not form.text.errors %}is-hidden{% endif %} js-error notification is-danger">
         {% if form.text.errors %}
           {{ form.text.errors }}
         {% endif %}
@@ -40,7 +40,7 @@
     <div class="field">
     <label for="{{ text_field_id }}"
       class="js-text-label label">{{ form.text.label }}</label>
-    <div class="js-text-error js-error help is-danger">
+    <div class="js-text-error {% if not form.text.errors %}is-hidden{% endif %} js-error notification is-danger">
       {% if form.text.errors %}
         {{ form.text.errors }}
       {% endif %}

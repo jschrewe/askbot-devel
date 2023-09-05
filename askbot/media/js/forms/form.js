@@ -52,12 +52,18 @@ Form.prototype.setFieldError = function (fieldName, errorMsg) {
     var error = this._errorElements[fieldName];
     error.html(errorMsg);
     this._errors[fieldName] = true;
+
+    if (error[0].classList.contains("is-hidden")) {
+        error[0].classList.remove("is-hidden");
+    }
 };
 
 Form.prototype.clearFieldError = function (fieldName) {
     var error = this._errorElements[fieldName];
     error.html('');
     this._errors[fieldName] = false;
+
+    error[0].classList.add("is-hidden");
 };
 
 Form.prototype.validateField = function (fieldName) {
