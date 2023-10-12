@@ -724,11 +724,15 @@ for the purposes of the AJAX comment editor #}
 {%- macro paginator(p, anchor='') -%}{# p is paginator context dictionary #}
   {% filter trim %}
     {% if p.is_paginated %}
-      <div class="paginator" data-num-pages="{{ p.pages }}">
-        <a class="js-prev-page prev-page with-caret-left-icon{% if p and not p.has_previous %} js-disabled{% endif %}"
+      <div class="pagination is-centered" data-num-pages="{{ p.pages }}">
+        <a class="js-prev-page prev-page with-caret-left-icon pagination-previous {% if p and not p.has_previous %} js-disabled is-disabled{% endif %}"
           href="{{p.base_url}}page={{ p.previous }}{{ anchor }}"
           aria-label="{% trans %}previous{% endtrans %}"
-        ></a>
+        >Vorherige</a>
+        <a class="js-next-page next-page with-caret-right-icon pagination-next {% if p and not p.has_next %} js-disabled is-disabled{% endif %}"
+          href="{{p.base_url}}page={{ p.next }}{{ anchor }}"
+          aria-label="{% trans %}next page{% endtrans %}"
+        >Nächste</a>
 
         <span class="js-first-page-block"
           {% if p.in_leading_range %}style="display: none"{% endif %}
@@ -741,16 +745,18 @@ for the purposes of the AJAX comment editor #}
           <span class="with-ellipsis-h-icon"></span>
         </span>
 
+        <ul class="pagination-list">
         {% for num in p.page_numbers %}
+          <li>
           {% if num == p.page %}
-            <a class="current-page page"
+            <a class="current-page page pagination-link is-current"
               data-page="{{ num }}"
               aria-label="{% trans %}current page{% endtrans %}"
             >
               {{ num }}
             </a>
           {% else %}
-            <a class="page"
+            <a class="page pagination-link"
               href="{{p.base_url}}page={{ num }}{{ anchor }}"
               data-page="{{ num }}"
               aria-label="{% trans %}page {{num}}{% endtrans %}"
@@ -758,7 +764,9 @@ for the purposes of the AJAX comment editor #}
               {{ num }}
             </a>
           {% endif %}
+          </li>
         {% endfor %}
+        </ul>
 
         <span class="js-last-page-block"
           {% if p.in_trailing_range %}style="display: none"{% endif %}
@@ -772,10 +780,7 @@ for the purposes of the AJAX comment editor #}
             {{ p.pages }}
           </a>
         </span>
-        <a class="js-next-page next-page with-caret-right-icon{% if p and not p.has_next %} js-disabled{% endif %}"
-          href="{{p.base_url}}page={{ p.next }}{{ anchor }}"
-          aria-label="{% trans %}next page{% endtrans %}"
-        ></a>
+        
       </div>
     {% endif %}
   {% endfilter %}

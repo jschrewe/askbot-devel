@@ -5,18 +5,18 @@
     {% include "tags/no_tags.html" %}
   {% endif %}
   {% if tags.object_list %}
-    <ul class='tags'>
+    <div class='tags mt-5'>
       {% for tag in tags.object_list %}
-      <li>
         {{ macros.tag_widget(
           tag=tag.name,
           truncate_long_tag=True,
           extra_content='&nbsp;' ~ macros.used_count(tag.used_count)
         )}}
-      </li>
       {% endfor %}
-    </ul>
+    </div>
+    <div class="mt-5">
     {{ macros.paginator(paginator_context) }}
+  </div>
   {% endif %}
 {% else %}
   {% if not tags %}
