@@ -30,12 +30,18 @@
                 <div class="hero-body pl-0 pb-0 pt-0 level">
                   <div class="level-left">
                     <div class="level-item">
+                      {% if request.site.id == 1 %}
                       <figure class="image is-128x128 mr-5" style="height: 100%">
                         <img src="/static/img/logo_berlin.png" height="150" class="mb-auto mt-auto" />
                       </figure>
+                      {% else %}
+                      <figure class="image is-128x128 mr-5" style="height: 100%">
+                        <img src="/static/img/logo_hamburg.png" height="150" class="mb-auto mt-auto" />
+                      </figure>
+                      {% endif %}
                       </div>
                       <div class="level-item mb-auto mt-auto">
-                        <p class="title">Arbeitszeitstudie Berlin – FAQ & Forum</p>
+                        <p class="title">{{ request.site.name }}</p>
                     </div>
                   </div>
                 </div>
