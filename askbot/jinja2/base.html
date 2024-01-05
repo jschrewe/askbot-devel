@@ -59,7 +59,11 @@
                       {% if user.is_authenticated %}
                       <div id="navbarBasicExample" class="navbar-menu">
                         <div class="navbar-start">
+                          {% if request.site.id == 1 %}
                           <a class="navbar-item" href="https://berlin.arbeitszeitstudie.de/">
+                          {% else %}
+                          <a class="navbar-item" href="https://hamburg.arbeitszeitstudie.de/">
+                          {% endif %}
                             Zeiterfassung
                           </a>
                     
